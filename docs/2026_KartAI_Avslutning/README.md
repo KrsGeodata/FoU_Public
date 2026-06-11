@@ -1,6 +1,9 @@
 # KartAI Avslutningsseminar 2026
+<img width="1006" height="570" alt="image" src="https://github.com/user-attachments/assets/3c40fcfa-38f2-4129-ad6d-3dfac4e55ff6" />
 
 ## Fra prosjekt til arbeidsform
+Bildet nedenfor oppsummerer arbeidsformen som ble etablert gjennom FoU-programmet våren 2026
+<img width="1502" height="847" alt="image" src="https://github.com/user-attachments/assets/746b9d45-ae19-423d-9fee-0bc535650549" />
 
 **Dato:** 21. mai 2026  
 **Sted:** Bystyresalen, Kristiansand rådhus
@@ -10,6 +13,8 @@ Denne katalogen inneholder presentasjoner, erfaringer og resultater fra avslutni
 Seminaret samlet representanter fra kommuner, akademia, næringsliv, direktorater og nasjonale fagmiljøer for å presentere erfaringer, resultater og refleksjoner fra årets FoU-løp.
 
 KartAI handler ikke bare om enkeltstående prosjekter og teknologiske løsninger. Programmet har også vært en arena for å utforske hvordan offentlig sektor kan organisere forskning, innovasjon og utvikling som en langsiktig arbeidsform med reell verdiskaping.
+<img width="379" height="150" alt="image" src="https://github.com/user-attachments/assets/33ebdaea-507f-4287-87f0-5f8e793e68d1" />
+
 
 ---
 
@@ -66,27 +71,48 @@ Utforsker hvordan kommunale tjenester, data og informasjon kan samles i en mer h
 
 ---
 
+## Opptak fra avslutningsseminaret
+
+Avslutningsseminaret er tilgjengelig som komplett videoopptak med kapittelinndeling.
+
+Opptaket inkluderer:
+
+- Innlegg fra kommuner, direktorater og fagmiljøer
+- Studentpresentasjoner av årets MVP-er
+- Erfaringer fra KartAI-programmet
+- Refleksjoner rundt videre forskning og utvikling
+- Presentasjonen «Fra prosjekt til arbeidsform»
+
+🎥 Videoarkiv:
+
+https://kristiansand.kommunetv.no/archive/950
+
+Presentasjonene som ble benyttet under seminaret finnes nedenfor.
+
+---
+
 ## Presentasjoner fra avslutningsseminaret
 
 | Program | Presentasjon |
 |----------|-------------|
-| Velkommen og åpning | [00_Velkommen_og_apning.pdf](00_Velkommen_og_apning.pdf) |
-| Hva skjer når universitetene kobler seg på næringslivet? | [01_Foredrag-UiA_Hva_skjer_nar_Universitetene_kobler_seg_pa_naringslivet_Oystein-Sabo.pdf](01_Foredrag-UiA_Hva_skjer_nar_Universitetene_kobler_seg_pa_naringslivet_Oystein-Sabo.pdf) |
-| Viktigheten av idéfabrikker | [02_Foredrag-DiBK-KS_Viktigheten-av-Idefabrikker_HLT-OHN.pdf](02_Foredrag-DiBK-KS_Viktigheten-av-Idefabrikker_HLT-OHN.pdf) |
-| Lokal LLM for Saksbehandlere | [03_MVP-Saksbehandler_LLM_Lambda-og-Rune-Odegard.pdf](03_MVP-Saksbehandler_LLM_Lambda-og-Rune-Odegard.pdf) |
-| Fremtidens Digitale Kontaktflate | [04_MVP-Min_Eiendom_Delta-og-Dagfinn-Oksendal.pdf](04_MVP-Min_Eiendom_Delta-og-Dagfinn-Oksendal.pdf) |
-| DiBK Veiviser m/TiltaksAID | [05_MVP-DiBK_Veiviseren_Pi-og-Dagfinn-Oksendal.pdf](05_MVP-DiBK_Veiviseren_Pi-og-Dagfinn-Oksendal.pdf) |
-| Tematiske Drømmeplaner | [06_MVP-Tematiske_Drommeplaner_Chi-og-Dagfinn-Oksendal.pdf](06_MVP-Tematiske_Drommeplaner_Chi-og-Dagfinn-Oksendal.pdf) |
+| Velkommen og åpning | [00_Velkommen_og_apning_KrsKom-Venke-Moe.pdf_KartAI_Avslutning-2026-05-21.pdf](00_Velkommen_og_apning_KrsKom-Venke-Moe.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Hva skjer når universitetene kobler seg på næringslivet? | [01_Foredrag-UiA_Hva_skjer_nar_Universitetene_kobler_seg_pa_naringslivet_Oystein-Sabo.pdf_KartAI_Avslutning-2026-05-21.pdf](01_Foredrag-UiA_Hva_skjer_nar_Universitetene_kobler_seg_pa_naringslivet_Oystein-Sabo.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Viktigheten av idéfabrikker | [02_Foredrag-DiBK-KS_Viktigheten-av-Idefabrikker_HLT-OHN.pdf_KartAI_Avslutning-2026-05-21.pdf](02_Foredrag-DiBK-KS_Viktigheten-av-Idefabrikker_HLT-OHN.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Lokal LLM for Saksbehandlere | [03_MVP-Saksbehandler_LLM_Lambda-og-Rune_Odegard.pdf_KartAI_Avslutning-2026-05-21.pdf](03_MVP-Saksbehandler_LLM_Lambda-og-Rune_Odegard.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Fremtidens Digitale Kontaktflate | [04_MVP-Min_Eiendom_Delta-og_Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf](04_MVP-Min_Eiendom_Delta-og_Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| DiBK Veiviser m/TiltaksAID | [05_MVP-DiBK_Veiviseren_Pi-og-Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf](05_MVP-DiBK_Veiviseren_Pi-og-Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Tematiske Drømmeplaner | [06_MVP-Tematiske_Drommeplaner_Chi-og-Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf](06_MVP-Tematiske_Drommeplaner_Chi-og-Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf) |
 | Avrunding studentpresentasjoner | [07_MVP-Avrunding_studentpresentasjoner_Dagfinn-Oksendal.pdf](07_MVP-Avrunding_studentpresentasjoner_Dagfinn-Oksendal.pdf) |
-| Plan og sånt | [08_Innlegg-KrsKom_Plan_og_sant_Anna-Maria-Dang.pdf](08_Innlegg-KrsKom_Plan_og_sant_Anna-Maria-Dang.pdf) |
-| Videre forskning | [09_Innlegg-KrsKom_Videre_forskning_Sebastian-Thune.pdf](09_Innlegg-KrsKom_Videre_forskning_Sebastian-Thune.pdf) |
-| Fra prosjekt til arbeidsform | [10_Foredrag-KrsKom_Fra_prosjekt_til_arbeidsform_Rune-Odegard.pdf](10_Foredrag-KrsKom_Fra_prosjekt_til_arbeidsform_Rune-Odegard.pdf) |
-| Praktisk oppsummering og videre arbeid | [12_Praktisk_oppsummering_og_videre_arbeid_KrsKom-Dagfinn-Oksendal.pdf](12_Praktisk_oppsummering_og_videre_arbeid_KrsKom-Dagfinn-Oksendal.pdf) |
-| Praktisk oppsummering og videre arbeid (UiA) | [11_Praktisk_oppsummering_og_videre_arbeid_UiA.pdf](11_Praktisk_oppsummering_og_videre_arbeid_UiA.pdf) |
+| Plan og sånt | [08_Innlegg-KrsKom_Plan_og_sant_Anna-Maria-Dang.pdf_KartAI_Avslutning-2026-05-21.pdf](08_Innlegg-KrsKom_Plan_og_sant_Anna-Maria-Dang.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Videre forskning | [09_Innlegg-KrsKom_Videre_forskning_Sébastian-Thune.pdf_KartAI_Avslutning-2026-05-21.pdf](09_Innlegg-KrsKom_Videre_forskning_Sébastian-Thune.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Fra prosjekt til arbeidsform | [10_Foredrag-KrsKom_Fra_prosjekt_til_arbeidsform_Rune-Odegard.pdf_KartAI_Avslutning-2026-05-21.pdf](10_Foredrag-KrsKom_Fra_prosjekt_til_arbeidsform_Rune-Odegard.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Praktisk oppsummering og videre arbeid (UiA) | [11_Praktisk_oppsummering_og_videre_arbeid-UiA.pdf_KartAI_Avslutning-2026-05-21.pdf](11_Praktisk_oppsummering_og_videre_arbeid-UiA.pdf_KartAI_Avslutning-2026-05-21.pdf) |
+| Praktisk oppsummering og videre arbeid | [12_Praktisk_oppsummering_og_videre_arbeid_KrsKom-Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf](12_Praktisk_oppsummering_og_videre_arbeid_KrsKom-Dagfinn-Oksendal.pdf_KartAI_Avslutning-2026-05-21.pdf) |
 
 ---
 
 ## Resultater
+<img width="1057" height="596" alt="image" src="https://github.com/user-attachments/assets/947c97ea-3c81-4601-8151-4c612e871d73" />
 
 Gjennom våren 2026 leverte studentteamene:
 
