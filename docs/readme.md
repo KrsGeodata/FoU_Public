@@ -14,6 +14,42 @@ Innholdet i denne katalogen er lisensiert under **CC-BY-4.0**.
 
 ## Innhold
 
+## Grunnlag og bakgrunn
+
+Disse dokumentene beskriver bakgrunnen, metodikken og tankegangen som ligger til grunn for FoU-programmet.
+
+### FoU-modellen
+
+📄 [Kristiansand FoU Modell – Plan og Bygg](2025-02-12_Kristiansand-FoU-Modell_Plan_og_Bygg.pdf)
+
+Beskriver den overordnede FoU-modellen, organisering, roller, arbeidsform og hvordan kommunen benytter studentprosjekter, forskning og MVP-utvikling som del av innovasjonsarbeidet.
+
+---
+
+### Hva er FoU-programmet?
+
+📄 [FoU Forklaring](2026-01-27_FoU_Forklaring.pdf)
+
+En introduksjon til FoU-programmets hensikt, målsettinger og arbeidsform. Dokumentet forklarer hvorfor kommunen investerer i forskning, eksperimentering og MVP-utvikling før anskaffelser og større utviklingsløp.
+
+---
+
+### Ofte stilte spørsmål
+
+📄 [Svar på spørsmål om FoU-programmet](2026-01-27_Svar_pa_noen_sporsmal_ift_FoU_programmet.pdf)
+
+Samling av spørsmål og svar knyttet til programmet, arbeidsformen, studentinvolvering, gevinster, kostnader og forventede resultater.
+
+---
+
+### Gjesteforelesning UiA
+
+📄 [Digitalisering i Kristiansand kommune](2026-03-24_Gjesteforelesning_Digitalisering_i_Kristiansand_Kommune_UiA_2026_03_24.pdf)
+
+Presentasjon holdt ved Universitetet i Agder som beskriver kommunens syn på digitalisering, innovasjon, FoU og samspillet mellom akademia, offentlig sektor og næringsliv.
+
+---
+
 ### FoU-programmer og initiativer
 
 Dokumentasjon knyttet til konkrete FoU-løp, prosjekter og innovasjonsprogrammer.
