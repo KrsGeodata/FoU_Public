@@ -157,7 +157,7 @@ For flere av løsningene vil videre arbeid kunne skje gjennom:
 
 ## Leverandørwebinar – Fra FoU til marked
 
-Som en direkte oppfølging av KartAI-avslutningen arrangerer Kristiansand kommune og DiBK et åpent leverandørwebinar.
+Som en direkte oppfølging av KartAI-avslutningen inviterer Kristiansand kommune i samarbeid med DiBK til et åpent leverandørwebinar.
 
 Målet er å redusere avstanden mellom:
 
