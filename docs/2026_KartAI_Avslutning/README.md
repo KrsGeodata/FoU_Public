@@ -15,7 +15,7 @@ KartAI handler ikke bare om enkeltstående prosjekter og teknologiske løsninger
 
 ## Anbefalt startpunkt
 
-📖 **[Fra prosjekt til arbeidsform](10_Foredrag-KrsKom_Fra_prosjekt_til_arbeidsform_Rune-Odegard.pdf)**
+📖 **[Fra prosjekt til arbeidsform](10_Foredrag-KrsKom_Fra_prosjekt_til_arbeidsform_Rune-Odegard.pdf_KartAI_Avslutning-2026-05-21.pdf)**
 
 Denne presentasjonen oppsummerer arbeidsformen, metodikken, organiseringen og erfaringene som ligger til grunn for årets FoU-program.
 
