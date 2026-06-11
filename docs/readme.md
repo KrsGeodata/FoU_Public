@@ -1,3 +1,7 @@
+[🏠 FoU Public](../../README.md) | [📚 Dokumentasjon](../README.md) | [📄 Lisens](../../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
+
+---
+
 # docs/
 
 Denne katalogen inneholder beskrivende materiale knyttet til
