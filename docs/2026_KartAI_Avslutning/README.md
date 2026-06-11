@@ -1,3 +1,6 @@
+[🏠 FoU Public](../../README.md) | [📚 Dokumentasjon](../README.md) | [🚂 KartAI 2026](README.md) | [📄 Lisens](../../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
+---
+
 # KartAI Avslutningsseminar 2026
 <img width="1006" height="570" alt="image" src="https://github.com/user-attachments/assets/3c40fcfa-38f2-4129-ad6d-3dfac4e55ff6" />
 
