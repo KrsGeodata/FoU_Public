@@ -1,93 +1,152 @@
-# License & Usage
+# Kristiansand Municipal FoU Program
+<img width="672" height="61" alt="image" src="https://github.com/user-attachments/assets/434ddf7f-bb46-479f-8135-514259ebdad6" />
 
-This repository uses a dual licensing model:
+## Building public sector capability through research, experimentation and open innovation
 
-## Code --- Mozilla Public License 2.0 (MPL‑2.0)
+The Kristiansand FoU Program is a municipal initiative designed to strengthen the public sector's ability to understand, prototype and validate digital solutions before procurement and implementation.
 
-All source code inside the `code/` directory is licensed under MPL‑2.0.
+Rather than outsourcing problem discovery, the municipality works together with students, academia, public agencies and industry partners to explore real challenges, validate solution concepts and build working MVPs.
 
-What this means: - You can use the code commercially - You can include
-it inside proprietary solutions - If you modify existing files, those
-modifications must remain open - You can build new modules around it
-without open‑sourcing your entire product
+The goal is simple:
 
-Purpose:\
-Ensures vendors can adopt and deliver solutions, while improvements to
-the shared core remain available to the municipality and public sector.
+> Understand first. Specify second. Procure last.
 
-## Documentation & Methods --- Creative Commons Attribution 4.0 (CC‑BY‑4.0)
+---
 
-All material inside `docs/` is licensed under CC‑BY‑4.0.
+## Why this repository exists
 
-What this means: - Anyone may reuse, adapt and redistribute the
-material - Commercial use is allowed - Attribution to Kristiansand
-kommune is required
+This repository serves as the public archive for selected FoU initiatives carried out by Kristiansand municipality and its partners.
 
-Purpose:\
-Treats architecture, methods and knowledge as a public good while
-ensuring origin transparency.
+The repository contains:
 
-------------------------------------------------------------------------
+- Research and innovation documentation
+- Presentations and reports
+- Architectural concepts and patterns
+- MVP demonstrations
+- Open source reference implementations
+- Methodology and lessons learned
 
-# Kristiansand FoU Program
+The intention is to make results reusable across municipalities, public agencies, academia and industry.
 
-## Background
+---
 
-The Kristiansand FoU initiative is a municipal research‑driven
-innovation program designed to strengthen public sector capability to
-understand, prototype and specify digital solutions before procurement.
+## Public FoU Archive
 
-Rather than outsourcing problem discovery, the municipality builds
-internal insight and validated MVPs that later become precise
-procurement specifications.
+This repository serves as the long-term public archive for selected Kristiansand municipality FoU initiatives.
 
-The goal is to move from:
+Each initiative may contain:
 
-> buying investigation → to buying implementation
+- Background and problem descriptions
+- Presentations and reports
+- Architecture and methodology
+- MVP demonstrations
+- Open source reference implementations
+- Lessons learned and recommendations
 
-------------------------------------------------------------------------
+The goal is to make knowledge, experience and validated solution concepts reusable across municipalities, academia and industry.
 
-## Core Objectives
+---
 
-1.  Increase municipal competence in technology and architecture
-2.  Reduce dependency on external consultants for problem definition
-3.  Produce validated MVPs prior to tender processes
-4.  Enable vendor competition on implementation quality rather than
-    interpretation
-5.  Establish reusable digital public sector building blocks
+## Featured Initiative: KartAI 2026
 
-------------------------------------------------------------------------
+KartAI represents one of the municipality's largest coordinated FoU efforts to date.
 
-## Operating Model
+The initiative brought together:
 
-The program is organized as a structured Agile Release Train involving:
+- Municipal domain experts
+- Bachelor student teams
+- Academic researchers
+- National agencies
+- Technology partners
 
--   Multiple bachelor student teams
--   Master thesis and internship projects
--   Municipal advisors and domain experts
--   Iterative Program Increments
+to explore future solutions within:
 
-Each cycle produces: - Working prototypes - Architectural patterns -
-Verified datasets - Decision support for procurement
+- Artificial Intelligence
+- Planning and Building Services
+- Geospatial Data
+- Digital Citizen Services
 
-------------------------------------------------------------------------
+### Results
 
-## Strategic Intention
+The 2026 program delivered:
 
-The repository represents a public digital commons.
+- Four working MVPs
+- Shared architecture patterns
+- Open FoU documentation
+- Demonstrated solution concepts
+- Reusable code foundations
 
-Vendors are encouraged to build services and products based on the
-work.\
-The municipality retains permanent free usage rights to the shared
-methods and core implementations through open licensing.
+### Documentation
 
-The long‑term aim is a healthier supplier market where: - Public sector
-owns problem understanding - Market competes on delivery quality -
-Knowledge accumulates instead of being repurchased
+📖 [KartAI 2026 – Final Seminar and Results](docs/2026_KartAI_Avslutning/)
 
-------------------------------------------------------------------------
+---
+
+## K-LABS
+
+Active experiments, MVPs and FoU initiatives are continuously published through K-LABS.
+
+K-LABS acts as Kristiansand municipality's public innovation laboratory and experimentation platform.
+
+🌐 https://labs.geokrs.no
+
+---
 
 ## Repository Structure
 
-    /docs   → architecture, presentations, methodology, decision basis (CC‑BY‑4.0)
-    /code   → reference implementations, tools, experiments (MPL‑2.0)
+```text
+/docs
+    Documentation, reports, presentations and methodology
+
+/code
+    Reference implementations, prototypes and experiments
+
+/assets
+    Images, diagrams and supporting material
+```
+
+---
+
+## Open Innovation
+
+The municipality believes that public sector innovation should create value beyond individual projects.
+
+Whenever possible, concepts, methods, documentation and code are published openly to enable:
+
+- Reuse
+- Learning
+- Collaboration
+- Further development
+
+across municipalities, academia and industry.
+
+---
+
+## Featured Projects
+
+### 2026
+
+- 📖 [KartAI 2026 – Final Seminar and Results](docs/2026_KartAI_Avslutning/)
+
+Future FoU initiatives will be added here as they are completed and published.
+
+---
+
+## Licensing
+
+This repository uses a dual licensing model.
+
+📄 [License & Usage Information](LICENSE_USAGE.md)
+
+---
+
+## Contact
+
+Kristiansand Municipality
+
+Plan and Building Department
+
+🌐 https://labs.geokrs.no
+
+📂 Repository:
+https://github.com/KrsGeodata/FoU_Public
