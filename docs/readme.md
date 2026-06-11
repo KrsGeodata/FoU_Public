@@ -1,77 +1,94 @@
-[🏠 FoU Public](../../README.md) | [📚 Dokumentasjon](../README.md) | [📄 Lisens](../../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
+[🏠 FoU Public](../README.md) | [📚 Dokumentasjon](README.md) | [📄 Lisens](../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
 
 ---
 
-# docs/
+# Dokumentasjon
 
-Denne katalogen inneholder beskrivende materiale knyttet til
-Kristiansand kommunes FoU‑program.\
-Formålet er å gjøre metode, erfaringer og beslutningsgrunnlag forståelig
-og gjenbrukbart for andre offentlige virksomheter og leverandører.
+Denne katalogen inneholder dokumentasjon, presentasjoner, rapporter, erfaringer og beslutningsgrunnlag fra Kristiansand kommunes FoU-program.
 
-Innholdet her er lisensiert under **CC‑BY‑4.0**.\
-Materialet kan fritt brukes og videreutvikles, så lenge opphav
-krediteres.
+Formålet er å gjøre metoder, erfaringer, arkitektur og resultater tilgjengelig for kommuner, akademia, leverandører og andre som ønsker å lære av eller bygge videre på arbeidet.
 
-------------------------------------------------------------------------
+Innholdet i denne katalogen er lisensiert under **CC-BY-4.0**.
 
-## Hva finnes her
+---
 
-### FoU‑modellen
+## Innhold
 
-Beskriver hvordan kommunen organiserer forsknings‑ og innovasjonsarbeid
-før anskaffelser:
+### FoU-programmer og initiativer
 
--   Programstruktur
--   Roller og ansvar
--   PI‑sykluser
--   Samspill mellom fag, teknologi og studenter
--   Hvordan innsikt omformes til kravgrunnlag
+Dokumentasjon knyttet til konkrete FoU-løp, prosjekter og innovasjonsprogrammer.
 
-### Metodikk og praksis
+#### 2026
 
-Dokumentasjon av arbeidsform:
+- 📖 [KartAI Avslutningsseminar 2026](2026_KartAI_Avslutning/)
 
--   Agile arbeidsprosesser
--   Eksperimentering og MVP‑utvikling
--   Datadrevet beslutningsstøtte
--   Evaluering og læringssløyfer
+---
+
+### Metodikk og arbeidsform
+
+Dokumentasjon som beskriver hvordan kommunen organiserer forskning, innovasjon og MVP-utvikling.
+
+Typiske tema:
+
+- Programstyring
+- PI-planlegging
+- Agile arbeidsformer
+- Studentdrevet FoU
+- Eksperimentering og MVP-utvikling
+- Samspill mellom fag og teknologi
+
+---
 
 ### Arkitektur og prinsipper
 
-Overordnede føringer for løsningene som utvikles:
+Overordnede prinsipper og føringer som benyttes på tvers av FoU-arbeidet.
 
--   Integrasjonsmønstre
--   Dataplattform‑tenkning
--   Leverandøruavhengighet
--   Gjenbrukbarhet i offentlig sektor
+Eksempler:
 
-### Erfaringer og anbefalinger
+- Integrasjonsarkitektur
+- Dataplattform-tenkning
+- KI-arkitektur
+- Leverandøruavhengighet
+- Gjenbrukbare byggesteiner
 
-Oppsummeringer etter gjennomførte iterasjoner:
-
--   Hva fungerte
--   Hva fungerte ikke
--   Justeringer i modellen
--   Råd til andre kommuner
+---
 
 ### Presentasjoner og beslutningsgrunnlag
 
 Materiale brukt internt og eksternt:
 
--   Slides
--   Notater
--   Vurderinger før anskaffelser
--   Konseptbeskrivelser
+- Presentasjoner
+- Konseptbeskrivelser
+- Vurderinger
+- Beslutningsgrunnlag
+- Erfaringer og anbefalinger
 
-------------------------------------------------------------------------
+---
 
 ## Hensikt
 
-Katalogen representerer kunnskapsgrunnlaget bak løsningene i `code/`.
+Denne katalogen representerer kunnskapsgrunnlaget bak løsningene som publiseres i repositoryet.
 
-Den skal gjøre det mulig å: - forstå hvorfor noe er laget - videreføre
-arbeidet uten historisk kontekst - bruke modellen i egen organisasjon -
-evaluere før man kjøper eller utvikler
+Målet er å gjøre det mulig å:
 
-Dette er ikke markedsføring --- det er dokumentert praksis.
+- forstå hvorfor noe er utviklet
+- forstå hvordan det ble utviklet
+- videreføre arbeidet uten historisk kontekst
+- gjenbruke metoder og erfaringer
+- evaluere løsningsretninger før anskaffelser eller utvikling
+
+---
+
+## Relaterte ressurser
+
+🌐 K-LABS  
+https://labs.geokrs.no
+
+📂 FoU Public Repository  
+https://github.com/KrsGeodata/FoU_Public
+
+---
+
+> Dette er ikke markedsføring.
+>
+> Dette er dokumentert praksis, erfaringer og resultater fra kommunalt FoU-arbeid.
