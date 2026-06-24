@@ -30,9 +30,11 @@ Passwords are committed to version control. Move to `.env.example` with placehol
 
 ### H1: f-string JSON injection in existing JSONB queries
 **Files:** `backend/app/repositories/auth.py` lines 77, 121, 161
+{% raw %}
 ```text
 {"personnr_filter": f'[{{"PERSONNR": "{personnr}"}}]'}
 ```
+{% endraw %}
 The personnummer is string-interpolated into JSON before SQL binding. Fix: use `json.dumps()` and add server-side validation that personnummer is exactly 11 digits.
 
 ### H2: No rate limiting on login endpoint
