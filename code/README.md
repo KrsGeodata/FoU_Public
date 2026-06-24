@@ -51,6 +51,9 @@ Se:
 
 for en nærmere beskrivelse av prosjektene.
 
+<img width="1882" height="1060" alt="image" src="https://github.com/user-attachments/assets/47ceb753-d0a4-4bc4-b4c3-05ea339149d1" />
+
+
 ### 2024-2025
 
 Inneholder prosjekter utviklet gjennom KartAI-programmet og tilhørende forsknings- og bacheloroppgaver.
