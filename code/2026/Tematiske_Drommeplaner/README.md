@@ -1,4 +1,4 @@
-# Mikrodrømmeplan
+# Tematiske Drømmeplaner
 
 Nettapplikasjon for Plan og Bygg, Kristiansand kommune. Lar innbyggere sjekke reguleringsplaner og gjeldende byggebestemmelser for eiendommer, og gir saksbehandlere et admingrensesnitt for å administrere plandata.
 
