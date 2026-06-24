@@ -12,7 +12,10 @@
 
 # FoU 2026 - MVP Archive
 
-...
+<img width="1541" height="962" alt="image" src="https://github.com/user-attachments/assets/f8c03947-3d12-41b6-bab8-c59e8570c630" />
+
+<img width="1882" height="1060" alt="image" src="https://github.com/user-attachments/assets/f56a0319-c555-41a1-b283-07563f402ec0" />
+
 
 # FoU 2026 - MVP Archive
 
