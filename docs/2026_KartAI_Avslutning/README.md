@@ -1,4 +1,8 @@
-[🏠 FoU Public](../../README.md) | [📚 Dokumentasjon](../README.md) | [🚂 KartAI 2026](README.md) | [📄 Lisens](../../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
+# Kristiansand Municipal FoU Program
+<img width="672" height="61" alt="image" src="https://github.com/user-attachments/assets/434ddf7f-bb46-479f-8135-514259ebdad6" />
+
+[🏠 FoU Portal](https://krsgeodata.github.io/) | [📚 Dokumentasjon](docs/) | [💻 GitHub Repository](https://github.com/KrsGeodata/FoU_Public) | [📄 Lisens](LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
+
 ---
 
 # KartAI Avslutningsseminar 2026
