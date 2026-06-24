@@ -1,4 +1,4 @@
-[🏠 FoU Public](../README.md) | [📚 Dokumentasjon](README.md) | [📄 Lisens](../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
+[🏠 FoU Portal](https://krsgeodata.github.io/) | [📚 FoU Public](../../README.md) | [📖 Dokumentasjon](../README.md) | [💻 GitHub](https://github.com/KrsGeodata/FoU_Public) | [📄 Lisens](../../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
 
 ---
 
