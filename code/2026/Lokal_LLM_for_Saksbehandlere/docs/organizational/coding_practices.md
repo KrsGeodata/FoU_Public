@@ -10,6 +10,7 @@
 - Except if the name of a spesific resource is in norwegian
 
 ### 4. Norwegian characters in code
-- Æ -> AE
-- Ø -> O
-- Å -> AA
+- Ã† -> AE
+- Ã˜ -> O
+- Ã… -> AA
+- 
