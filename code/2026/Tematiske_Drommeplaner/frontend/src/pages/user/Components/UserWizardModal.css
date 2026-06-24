@@ -1,0 +1,399 @@
+.uwm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(5, 21, 45, 0.62);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.uwm-panel {
+  width: min(1080px, 100%);
+  height: min(90vh, 880px);
+  background: #ffffff;
+  border: 2px solid #0b67c2;
+  box-shadow: 0 24px 50px rgba(2, 19, 40, 0.34);
+  display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+}
+
+.uwm-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border-bottom: 1px solid #d4e6ff;
+}
+
+.uwm-kicker {
+  margin: 0;
+  color: #0b67c2;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+}
+
+.uwm-header h2 {
+  margin: 4px 0 0;
+  font-size: 1.45rem;
+  color: #000000;
+}
+
+.uwm-close-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #7fb0e8;
+  background: #ffffff;
+  color: #0b67c2;
+  cursor: pointer;
+}
+
+.uwm-close-btn:hover {
+  background: #eff6ff;
+}
+
+.uwm-progress {
+  padding: 10px 18px;
+  border-bottom: 1px solid #d4e6ff;
+}
+
+.uwm-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.84rem;
+  color: #334155;
+}
+
+.uwm-progress__meta strong {
+  color: #0b67c2;
+}
+
+.uwm-progress__track {
+  margin-top: 8px;
+  width: 100%;
+  height: 9px;
+  background: #e9f0f8;
+  border: 1px solid #c7d8ea;
+  overflow: hidden;
+}
+
+.uwm-progress__fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #0b67c2 0%, #3c8de0 100%);
+}
+
+.uwm-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 18px;
+  border-bottom: 1px solid #d4e6ff;
+  color: #475569;
+  font-size: 0.84rem;
+}
+
+.uwm-breadcrumb__link {
+  border: none;
+  background: none;
+  color: #0b67c2;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.84rem;
+}
+
+.uwm-breadcrumb__link:hover {
+  text-decoration: underline;
+}
+
+.uwm-breadcrumb__sep {
+  color: #9bb4cf;
+}
+
+.uwm-content {
+  min-height: 0;
+  overflow: auto;
+  padding: 18px;
+  background: #f8fbff;
+}
+
+.uwm-section h3 {
+  margin: 0 0 14px;
+  color: #000000;
+  font-size: 1.16rem;
+}
+
+.uwm-card-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uwm-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #d3dfed;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.uwm-card:hover {
+  border-color: #0b67c2;
+  background: #f4f9ff;
+}
+
+.uwm-card--active {
+  border-color: #0b67c2;
+  background: #eaf3ff;
+}
+
+.uwm-card__icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #9ec4ef;
+  color: #0b67c2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.uwm-card__info {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+}
+
+.uwm-card__title {
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.96rem;
+}
+
+.uwm-card__meta {
+  color: #5b6f88;
+  font-size: 0.83rem;
+}
+
+.uwm-card__arrow {
+  color: #9bb4cf;
+}
+
+.uwm-list {
+  display: grid;
+  gap: 8px;
+}
+
+.uwm-list--grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.uwm-option {
+  text-align: left;
+  border: 1px solid #d3dfed;
+  background: #ffffff;
+  color: #0f172a;
+  min-height: 62px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.uwm-option__icon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #9ec4ef;
+  color: #0b67c2;
+  background: #f4f9ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.uwm-option strong {
+  font-size: 0.95rem;
+}
+
+.uwm-option:hover {
+  border-color: #0b67c2;
+  background: #f4f9ff;
+}
+
+.uwm-option--active {
+  border-color: #0b67c2;
+  background: #eaf3ff;
+}
+
+.uwm-rules {
+  display: grid;
+  gap: 10px;
+}
+
+.uwm-rule {
+  border: 1px solid #b9d5f5;
+  background: #ffffff;
+  padding: 14px;
+}
+
+.uwm-rule h4 {
+  margin: 0 0 8px;
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.uwm-rule-entry {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.uwm-rule-entry:last-child {
+  margin-bottom: 0;
+}
+
+.uwm-rule p {
+  margin: 0;
+  color: #000000;
+  white-space: pre-wrap;
+}
+
+.uwm-gallery-stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.uwm-gallery-item {
+  margin-bottom: 20px;
+}
+
+.uwm-gallery-item-title {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.uwm-gallery-item-content {
+  display: contents;
+}
+
+.uwm-gallery-item-content--with-image {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.uwm-gallery-item-image-wrapper {
+  border: 1px solid #dbe7f3;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: 6px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.uwm-gallery-item-image {
+  display: block;
+  max-width: 480px;
+  max-height: 240px;
+  object-fit: contain;
+}
+
+.uwm-gallery-item-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.uwm-gallery-item-content:not(.uwm-gallery-item-content--with-image) .uwm-gallery-item-text {
+  padding: 12px 14px;
+  background: transparent;
+  color: #374151;
+  border: 1px solid #dbe7f3;
+  border-radius: 8px;
+}
+
+.uwm-muted {
+  margin: 0;
+  color: #64748b;
+}
+
+.uwm-error {
+  margin: 0 0 8px;
+  color: #b91c1c;
+}
+
+.uwm-footer {
+  border-top: 1px solid #d4e6ff;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.uwm-nav-btn {
+  min-height: 44px;
+  border: 1px solid #0b67c2;
+  background: #0b67c2;
+  color: #fff;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.uwm-nav-btn:hover {
+  background: #084f93;
+}
+
+.uwm-nav-btn--light {
+  background: #ffffff;
+  color: #0b67c2;
+}
+
+.uwm-nav-btn--light:hover {
+  background: #f3f9ff;
+}
+
+.uwm-nav-btn:disabled {
+  background: #97abc1;
+  border-color: #97abc1;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .uwm-panel {
+    width: 100%;
+    height: 100%;
+  }
+
+  .uwm-backdrop {
+    padding: 0;
+  }
+
+  .uwm-list--grid {
+    grid-template-columns: 1fr;
+  }
+
+  .uwm-gallery-item-content--with-image {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

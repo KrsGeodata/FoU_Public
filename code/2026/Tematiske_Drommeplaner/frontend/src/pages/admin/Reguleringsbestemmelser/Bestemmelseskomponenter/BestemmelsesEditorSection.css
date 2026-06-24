@@ -1,0 +1,21 @@
+.bes-root {
+	width: 100%;
+}
+
+.bes-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 320px;
+	gap: 24px;
+	align-items: start;
+}
+
+.bes-main,
+.bes-sidebar {
+	min-width: 0;
+}
+
+@media (max-width: 1024px) {
+	.bes-grid {
+		grid-template-columns: 1fr;
+	}
+}

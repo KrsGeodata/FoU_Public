@@ -1,0 +1,62 @@
+.pis-root {
+  display: grid;
+  gap: 22px;
+}
+
+.pis-field {
+  display: grid;
+  gap: 4px;
+}
+
+.pis-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.pis-hint {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.pis-input {
+  width: 100%;
+  max-width: 720px;
+  padding: 9px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.pis-input:focus {
+  border-color: #002855;
+}
+
+.pis-input--short {
+  max-width: 320px;
+}
+
+.pis-next-btn {
+  background: #ffffff;
+  color: #113f79;
+  border: 1px dashed #2f6dbe;
+  border-radius: 6px;
+  padding: 12px 16px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pis-next-btn:hover {
+  background: #eef4ff;
+}
+
+.pis-actions {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 10px;
+}

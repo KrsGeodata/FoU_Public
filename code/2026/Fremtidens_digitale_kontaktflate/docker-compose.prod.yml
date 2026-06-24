@@ -1,0 +1,187 @@
+services:
+  database:
+    container_name: team-delta_database
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/database:latest
+    restart: unless-stopped
+    env_file:
+      - ./database/db.env
+    volumes:
+      - ./database/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - team-delta_network
+
+  frontend:
+    container_name: team-delta_frontend
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/frontend:latest
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - team-delta_network
+      - atlas_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.team-delta-frontend.rule=Host(`team-delta.geokrs.no`)"
+      - "traefik.http.routers.team-delta-frontend.entrypoints=web"
+      - "traefik.http.middlewares.team-delta-auth.basicauth.users=fou:$$apr1$$rFaUaSdk$$EF6orPeyOW/eZD1uFV7kf."
+      - "traefik.http.routers.team-delta-frontend.middlewares=team-delta-auth"
+      - "traefik.http.services.team-delta-frontend.loadbalancer.server.port=80"
+      - "traefik.docker.network=atlas_network"
+
+  backend:
+    environment:
+      - DEMO_MODE=false
+    container_name: team-delta_backend
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/backend:latest
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+      matrikkel-service:
+        condition: service_healthy
+      cms-service:
+        condition: service_healthy
+      renovasjon-service:
+        condition: service_healthy
+      arkiv-service:
+        condition: service_healthy
+    env_file:
+      - ./backend/backend.env
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - team-delta_network
+      - atlas_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.team-delta-backend.rule=Host(`team-delta.geokrs.no`) && PathPrefix(`/api/`)"
+      - "traefik.http.routers.team-delta-backend.priority=100"
+      - "traefik.http.routers.team-delta-backend.entrypoints=web"
+      - "traefik.http.middlewares.team-delta-strip.stripprefix.prefixes=/api/"
+      - "traefik.http.routers.team-delta-backend.middlewares=team-delta-auth,team-delta-strip"
+      - "traefik.http.services.team-delta-backend.loadbalancer.server.port=8000"
+      - "traefik.docker.network=atlas_network"
+
+  matrikkel-service:
+    environment:
+      - DEMO_MODE=false
+    container_name: team-delta_matrikkel-service
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/matrikkel-service:latest
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - ./matrikkel-service/matrikkel.env
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8001/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - team-delta_network
+
+  wagtail-cms:
+    environment:
+      - DEMO_MODE=false
+    container_name: team-delta_wagtail-cms
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/wagtail-cms:latest
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - ./wagtail-cms/cms.env
+    volumes:
+      - wagtail_media:/app/media
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8002/health/')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    networks:
+      - team-delta_network
+      - atlas_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.team-delta-cms.rule=Host(`admin.team-delta.geokrs.no`)"
+      - "traefik.http.routers.team-delta-cms.entrypoints=web"
+      - "traefik.http.routers.team-delta-cms.middlewares=team-delta-auth"
+      - "traefik.http.services.team-delta-cms.loadbalancer.server.port=8002"
+      - "traefik.docker.network=atlas_network"
+
+  arkiv-service:
+    environment:
+      - DEMO_MODE=false
+    container_name: team-delta_arkiv-service
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/arkiv-service:latest
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - ./arkiv-service/arkiv.env
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8005/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 45s
+    networks:
+      - team-delta_network
+
+  renovasjon-service:
+    environment:
+      - DEMO_MODE=false
+    container_name: team-delta_renovasjon-service
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/renovasjon-service:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8004/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - team-delta_network
+
+  cms-service:
+    environment:
+      - DEMO_MODE=false
+    container_name: team-delta_cms-service
+    image: ghcr.io/krsgeodata/801_26_fremt-dig-kont/cms-service:latest
+    restart: unless-stopped
+    depends_on:
+      wagtail-cms:
+        condition: service_healthy
+    env_file:
+      - ./cms-service/cms-service.env
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8003/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - team-delta_network
+
+volumes:
+  wagtail_media:
+
+networks:
+  team-delta_network:
+    external: true
+  atlas_network:
+    external: true

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary
+    x:Class="LocalLLMApp.UserControls.ResourceDictionary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:UIconverters="using:LocalLLMApp.Converters.UI">
+
+    <!-- *The resource dictionary defines reusable styles for WinUI elements* -->
+
+    <!-- UI Converters -->
+    <UIconverters:DateTimeDisplayConverter x:Key="DateTimeDisplayConverter"/>
+    <UIconverters:FileExtensionToColorConverter x:Key="FileExtensionToColorConverter"/>
+    <UIconverters:FileExtensionToGlyphConverter x:Key="FileExtensionToGlyphConverter"/>
+
+    <!-- Stackpanel displaying its content vertically -->
+    <Style x:Key="StackPanelStyle" TargetType="StackPanel">
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
+</ResourceDictionary>

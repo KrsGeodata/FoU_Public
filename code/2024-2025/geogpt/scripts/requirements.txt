@@ -1,0 +1,17 @@
+pandas
+aiohttp
+python-dotenv
+requests
+psycopg2
+pgvector
+websockets
+numpy
+PyPDF2
+tiktoken
+flask
+flask-cors
+langchain
+langgraph
+langchain-openai
+langsmith
+nest_asyncio

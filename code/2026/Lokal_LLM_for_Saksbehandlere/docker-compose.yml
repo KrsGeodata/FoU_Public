@@ -1,0 +1,33 @@
+services:
+  backend:
+    image: ghcr.io/krsgeodata/801_26_lokal-llm/backend:latest
+    container_name: lokal-llm-backend
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./storage:/app/storage
+    restart: unless-stopped
+    networks:
+      - geointernship25_network
+      - atlas_network  
+    labels:
+      - "traefik.enable=true"
+      # - "traefik.http.middlewares.lokal-llm-auth.basicauth.users=${TRAEFIK_AUTH}"
+      
+      # Host-based routing for lokal-llm
+      - "traefik.http.routers.lokal-llm-subdomain.rule=Host(`lokal-llm.geokrs.no`)"
+      - "traefik.http.routers.lokal-llm-subdomain.service=lokal-llm"
+      - "traefik.http.routers.lokal-llm-subdomain.entrypoints=web"
+      # - "traefik.http.routers.lokal-llm-subdomain.middlewares=lokal-llm-auth"
+      
+      # Service definition
+      - "traefik.http.services.lokal-llm.loadbalancer.server.port=8000"
+      - "traefik.docker.network=atlas_network"
+
+networks:
+  geointernship25_network:
+    external: true
+  atlas_network: 
+    external: true

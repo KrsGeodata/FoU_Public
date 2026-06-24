@@ -1,0 +1,106 @@
+/* src/components/Footer/Footer.css */
+
+/*
+  Footer uses BEM-like naming:
+  .krsFooter as the block and __element for sub-parts.
+*/
+.krsFooter {
+  position: relative; 
+  background: var(--color-brand-primary); 
+  color: #ffffff;
+  padding: 48px 0 42px;
+}
+
+/* Circular "back to top" button centered above the footer */
+.krsFooter__toTop {
+  position: absolute;
+  top: -22px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  background: var(--color-brand-primary);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  display: grid;
+  place-items: center; 
+  z-index: 2;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.krsFooter__toTop:hover {
+  background: var(--color-brand-primary);
+  border-color: #ffffff;
+}
+
+/* Inner container that keeps content centered within max width */
+.krsFooter__inner {
+  width: min(1120px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+/* Three columns in desktop layout */
+.krsFooter__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 84px;
+  align-items: start;
+}
+
+/* Small section headings (CONTACT, VISITING ADDRESS, etc.) */
+.krsFooter__title {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  opacity: 0.9;
+}
+
+/* Regular text lines in footer columns */
+.krsFooter__line {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* Links are underlined for clear click affordance */
+.krsFooter__link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.krsFooter__link:hover {
+  opacity: 0.9;
+}
+
+/* Muted line for copyright */
+.krsFooter__muted {
+  margin: 18px 0 0;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+/* Mobile layout: one column with tighter spacing */
+@media (max-width: 900px) {
+  .krsFooter {
+    padding: 42px 0 34px;
+  }
+
+  .krsFooter__inner {
+    width: min(1120px, calc(100% - 32px));
+  }
+
+  .krsFooter__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .krsFooter__line {
+    font-size: 16px;
+  }
+}

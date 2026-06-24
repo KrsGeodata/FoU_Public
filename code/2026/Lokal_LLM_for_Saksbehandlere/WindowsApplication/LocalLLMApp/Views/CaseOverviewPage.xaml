@@ -1,0 +1,106 @@
+﻿<Page
+    x:Class="LocalLLMApp.Views.CaseOverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalLLMApp.Views"
+    xmlns:casesUserControls="using:LocalLLMApp.UserControls.Cases"
+    xmlns:viewModels="using:LocalLLMApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <!-- The caseoverview page acts as an expanded view of the cases seen in the sidebar -->
+
+    <Page.Resources>
+        <!-- Page resources consists of resource dictionaries and data templates -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/UserControls/ResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <!-- Main page layout-->
+    <Grid Padding="36,40,36,24" RowSpacing="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="320"/> 
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Title and button row -->
+            <RowDefinition Height="Auto" />
+            <!-- Open cases title -->
+            <RowDefinition Height="*"/>
+            <!-- Open cases section -->
+            <RowDefinition Height="Auto" />
+            <!-- Archived cases title -->
+            <RowDefinition Height="*"/>
+            <!-- Archived cases section -->
+        </Grid.RowDefinitions>
+
+        <!-- Page Title -->
+            <TextBlock Text="Alle Saker"
+                       Grid.Column="0"
+                       HorizontalAlignment="Left"
+                       TextTrimming="CharacterEllipsis"
+                       Style="{StaticResource TitleLargeTextBlockStyle}"/>
+
+        <!-- Open cases -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/> <!-- Åpne saker -->
+                <ColumnDefinition Width="*"/>    <!-- Spacer -->
+                <ColumnDefinition Width="Auto"/> <!-- Ny sak -->
+            </Grid.ColumnDefinitions>
+
+            <!--Open cases text -->
+            <TextBlock Grid.Row="1" Text="Åpne saker" Style="{StaticResource TitleTextBlockStyle}"/>
+
+
+            <!-- "Ny Sak" Button -->
+            <Button Click="NewCaseButton_Click"
+                    Grid.Column="2"
+                    HorizontalAlignment="Right"
+                    CornerRadius="{StaticResource ControlCornerRadius}"
+                    Style="{StaticResource AccentButtonStyle}">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon Glyph="&#xECC8;" />
+                    <TextBlock Text="Ny sak" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <!-- Open cases control -->
+        <casesUserControls:CaseListControl Grid.Row="2" 
+                                  Items="{x:Bind ViewModel.OpenCases, Mode=OneWay}"
+                                  CaseItemClicked="CaseListControl_CaseItemClicked"
+                                  DeleteCaseRequested="DeleteCaseMenuFlyoutItem_Clicked"
+                                  RenameCaseRequested="CaseListControl_RenameCaseRequested"
+                                  ArchiveCaseRequested="ArchiveCaseMenuFlyoutItem_Clicked"/>
+        
+        <TextBlock Grid.Row="2"
+                   Text="Ingen åpne saker"
+                   Visibility="{x:Bind ViewModel.IsOpenCasesEmpty, Mode=OneWay}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Style="{StaticResource BodyTextBlockStyle}"
+                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+
+        <!-- Closed cases -->
+        <TextBlock Grid.Row="3" Text="Avsluttede saker" Style="{StaticResource TitleTextBlockStyle}"/>
+        <casesUserControls:CaseListControl Grid.Row="4" 
+                                  Items="{x:Bind ViewModel.ArchivedCases, Mode=OneWay}"
+                                  CaseItemClicked="CaseListControl_CaseItemClicked"
+                                  DeleteCaseRequested="DeleteCaseMenuFlyoutItem_Clicked"
+                                  RenameCaseRequested="CaseListControl_RenameCaseRequested"
+                                  ArchiveCaseRequested="ArchiveCaseMenuFlyoutItem_Clicked"/>
+        
+        <TextBlock Grid.Row="4"
+                   Text="Ingen åpne saker"
+                   Visibility="{x:Bind ViewModel.IsArchivedCasesEmpty, Mode=OneWay}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Style="{StaticResource BodyTextBlockStyle}"
+                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+    </Grid>
+</Page>

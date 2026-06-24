@@ -1,0 +1,102 @@
+<UserControl 
+    x:Class="LocalLLMApp.UserControls.Files.FileDragAndDropControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- FileDragAndDropControl: Reusable file input UserControl
+    
+    Features:
+    - Drag-and-drop file input with visual feedback
+    - Open file button for manual file selection
+    - Configurable placeholder text via PlaceholderText DependencyProperty
+    - VisualStateManager for DragStates (Normal/DragOver) and SizeStates (Default/Compact)
+    - IsCompact DependencyProperty for compact layout in space-constrained contexts
+   
+    Pages who use this control: 
+    - CreateCasePage (Default) To do: Check this!
+    - CasePage (IsCompact=True) 
+-->
+
+
+    <!-- Border for DropZone  -->
+    <Border x:Name="DropBorder"
+            AllowDrop="True"
+            Background="{ThemeResource TextControlBackground}"
+            BorderBrush="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+            BorderThickness="0.2"
+            CornerRadius="4"
+            Padding="16"
+            MinHeight="120"
+            DragEnter="DropBorder_DragEnter"
+            DragOver="DropBorder_DragOver"
+            DragLeave="DropBorder_DragLeave"
+            Drop="DropBorder_Drop">
+
+        <!-- Visual feedback for the two different states: Normal and Dragover -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="DragStates">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Target="DropBorder.BorderBrush" Value="{ThemeResource TextControlBorderBrush}"/>
+                        <Setter Target="DropBorder.Background" Value="{ThemeResource TextControlBackground}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="DragOver">
+                    <VisualState.Setters>
+                        <Setter Target="DropBorder.(BorderBrush)" Value="{ThemeResource SystemControlHighlightAccentBrush}"/>
+                        <Setter Target="DropBorder.(Background)" Value="{ThemeResource SystemControlHighlightListAccentLowBrush}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            
+            <!-- Visual states for different sizes: Default/Bigger and Compact/Smaller -->
+            <VisualStateGroup x:Name="SizeStates">
+                <VisualState x:Name="Default">
+                    <VisualState.Setters>
+                        <Setter Target="DropBorder.MinHeight" Value="120"/>
+                        <Setter Target="DropBorder.Padding" Value="16"/>
+                        <Setter Target="ContentStack.Spacing" Value="16"/>
+                        <Setter Target="DropIcon.FontSize" Value="28"/>
+                        <Setter Target="DropIcon.Margin" Value="0,16,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Compact">
+                    <VisualState.Setters>
+                        <Setter Target="DropBorder.MinHeight" Value="80"/>
+                        <Setter Target="DropBorder.Padding" Value="8"/>
+                        <Setter Target="ContentStack.Spacing" Value="8"/>
+                        <Setter Target="DropIcon.FontSize" Value="18"/>
+                        <Setter Target="DropIcon.Margin" Value="0,8,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+
+        <!-- Content of DropZone -->
+        <StackPanel x:Name="ContentStack"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="16"
+                    Background="Transparent">
+
+            <FontIcon x:Name="DropIcon"
+                      Glyph="&#xE898;" FontSize="28" 
+                      Foreground="{ThemeResource SystemControlForegroundBaseMediumHighBrush}"
+                      IsHitTestVisible="False"/>
+            
+            <TextBlock Text="{x:Bind PlaceholderText, FallbackValue='Slipp filer her, eller klikk for å velge'}"
+                       TextAlignment="Center"
+                       Foreground="{ThemeResource TextControlPlaceholderForeground}"
+                       IsHitTestVisible="False"/>
+            
+            <Button Content="Velg fil" 
+                    Click="OpenFilesButton_Click"
+                    HorizontalAlignment="Center"
+                    Margin="0,4,0,16"
+                    IsHitTestVisible="True"/>
+
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,95 @@
+.bdm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.bdm-panel {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 460px;
+  padding: 28px 28px 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.bdm-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: none;
+  color: #6b7280;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.bdm-close:hover {
+  background: #f1f5f9;
+  color: #1a1a1a;
+}
+
+.bdm-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 14px 0;
+  padding-right: 32px;
+}
+
+.bdm-text {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.65;
+  margin: 0 0 24px 0;
+}
+
+.bdm-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.bdm-btn--danger {
+  padding: 10px 26px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.bdm-btn--danger:hover {
+  background: #1d4ed8;
+}
+
+.bdm-btn--secondary {
+  padding: 10px 22px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  background: #fff;
+  color: #2563eb;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.bdm-btn--secondary:hover {
+  background: #f1f5f9;
+  border-color: #2563eb;
+}

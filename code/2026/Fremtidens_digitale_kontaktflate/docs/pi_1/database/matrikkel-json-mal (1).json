@@ -1,0 +1,128 @@
+{
+"GNR": "<DATA>"
+,"BNR": "<DATA>"
+,"FNR": "<DATA>"
+,"SNR": "<DATA>"
+,"EIENDOMSTYPE": "<DATA>"
+,"ETABLERT": "<DATA>"
+,"BER.AREAL": "<DATA>"
+,"HIST.OPPG.AR.": "<DATA>"
+,"HIST.AREAL.KILDE": "<DATA>"
+,"BRUK.GRUNN": "<DATA>"
+,"BRUKSNAVN": "<DATA>"
+,"T.LYST": "<DATA>"
+,"eierforhold":
+    [
+        {
+            "FØDSELSNR.ORG": "<DATA>"
+            ,"NAVN": "<DATA>"
+            ,"ADRESSE": "<DATA>"
+            ,"POSTSTED": "<DATA>"
+            ,"ANDEL": "<DATA>"
+            ,"PERSONSTATUS": "<DATA>"
+            ,"ROLLE": "<DATA>"
+            ,"ERVERVET": "<DATA>"
+            ,"SEKSJON": "<DATA>"
+        }
+        ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+    ]
+,"SIST.OPPDATERT": "<DATA>"
+,"VEGADRESSE": "<DATA>"
+,"POSTNUMMEROMRÅDE": "<DATA>"
+,"KOORD.KART": "<DATA>"
+,"krets_GRUNNKRETS": "<DATA>"
+,"krets_KIRKESOGN": "<DATA>"
+,"krets_POSTNUMMEROMRÅDE": "<DATA>"
+,"krets_SKOLEKRETS": "<DATA>"
+,"krets_STEMMEKRETS": "<DATA>"
+,"teiger": 
+    [
+        {
+        "TEIGID": "<DATA>"
+        ,"KOORDSYS": "<DATA>"
+        ,"NORD": "<DATA>"
+        ,"ØST": "<DATA>"
+        ,"AREAL": "<DATA>"
+        ,"AREAL.MERKNAD": "<DATA>"
+        ,"MERKNAD": "<DATA>"
+        ,"INFO": "<DATA>"
+        ,"EIENDOMMER": "<DATA>"
+        }
+        ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+    ]
+,"ANT.TEIGER": "<DATA>"
+,"OMNUMMERERT.FRA": "<DATA>"
+,"OMNUMMERERT.DATO": "<DATA>"
+,"UTSKILT.FRA": "<DATA>"
+,"forretninger": 
+    [
+        {
+        "FORRETNINGSTYPE": "<DATA>"
+        ,"BESKRIVELSE": "<DATA>"
+        ,"AREAL": "<DATA>"
+        ,"REF.": "<DATA>"
+        ,"FORR.DATO": "<DATA>"
+        ,"REG.DATO": "<DATA>"
+        ,"SAKREF": "<DATA>"
+        ,"ANDRE.INVOLVERTE": "<DATA>"
+        }
+        ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+    ]
+,"bygg": 
+    [
+        {
+        "TYPE": "<DATA>"
+        ,"BYGGNINGSNR": "<DATA>"
+        ,"etasjer": [
+            {
+            "ETASJE": "<DATA>"
+            ,"ANT.BOENH": "<DATA>"
+            ,"BRA.BOLIG": "<DATA>"
+            ,"BRA.ANNET": "<DATA>"
+            ,"BRA.TOTALT": "<DATA>"
+            ,"ALT.AREAL": "<DATA>"
+            ,"ALT.AREAL2": "<DATA>"
+            ,"BTA.BOLIG": "<DATA>"
+            ,"BTA.ANNET": "<DATA>"
+            ,"BTA.TOTALT": "<DATA>"
+            }
+            ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+            ]
+        ,"bruksenheter": [
+            {
+            "ADRESSE": "<DATA>"
+            ,"BOLIG": "<DATA>"
+            ,"BRA": "<DATA>"
+            ,"BAD": "<DATA>"
+            ,"WC": "<DATA>"
+            ,"ROM": "<DATA>"
+            ,"TYPE": "<DATA>"
+            ,"KJØKKEN": "<DATA>"
+            ,"EIENDOM": "<DATA>"
+            ,"SIST.ENDRET": "<DATA>"
+            }
+            ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+            ]
+        ,"vedtak": [
+            {
+            "STATUS": "<DATA>"
+            ,"DATO": "<DATA>"
+            ,"ÅRSAK": "<DATA>"
+            ,"REFERANSE": "<DATA>"
+            ,"REG.DATO": "<DATA>"
+            ,"SLETTET.DATO": "<DATA>"
+            }
+            ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+            ]
+        ,"byggningsreferanse": [
+            {
+            "TYPE": "<DATA>"
+            ,"REFERANSE": "<DATA>"
+            }
+            ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+            ]
+        }
+        ### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>
+    ]
+}
+### FJERN denne linjen ### <repeter OVENFOR med , mellom for flere>

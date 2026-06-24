@@ -1,0 +1,19 @@
+{
+  "profiles": {
+    "LocalLLMApp (Unpackaged)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "APPLICATION_ICON_PATH": "Assets\\Kristiansand_Byvaapen.ico",
+        "NAVIGATION_VIEW_PANE_HEADER_IMAGE": "Assets\\L_KRS_Forenklet_Byvaapen_uten_tekst_hvit.png"
+      }
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": "",
+      "environmentVariables": {
+        "APPLICATION_ICON_PATH": "Assets\\Kristiansand_Byvaapen.ico",
+        "NAVIGATION_VIEW_PANE_HEADER_IMAGE": "Assets\\L_KRS_Forenklet_Byvaapen_uten_tekst_hvit.png"
+      }
+    }
+  }
+}

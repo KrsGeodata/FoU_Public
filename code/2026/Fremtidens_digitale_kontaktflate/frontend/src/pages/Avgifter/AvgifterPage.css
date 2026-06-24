@@ -1,0 +1,306 @@
+.avgifter-layout {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.avgifter-header-panel {
+  padding-bottom: 16px;
+}
+
+.avgifter-source-panel {
+  padding: 16px;
+}
+
+.avgifter-source-grid {
+  margin: 0;
+}
+
+.avgifter-source-grid .ui-info-item {
+  min-height: 116px;
+}
+
+.avgifter-section-panel {
+  padding: 0;
+  overflow: visible;
+  min-width: 0;
+}
+
+.avgifter-collapsible-title {
+  list-style: none;
+  padding: 14px 18px;
+  background: #eef2f6;
+  border-bottom: 1px solid #d7dee8;
+  color: var(--heading-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.avgifter-collapsible-content {
+  padding: 14px 16px 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.avgifter-total-grid .ui-info-item {
+  min-height: 92px;
+}
+
+.avgifter-fee-table-wrapper {
+  border: 2px solid #9aacc1;
+  border-radius: 4px;
+  overflow: visible;
+  background: #fff;
+  max-width: 100%;
+}
+
+.avgifter-fee-table {
+  width: 100%;
+  min-width: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  border: 2px solid #9aacc1;
+  position: relative;
+  z-index: 0;
+}
+
+.avgifter-fee-table thead th {
+  padding: 8px 6px;
+  text-align: center;
+  color: #475467;
+  background: #eef3f8;
+  border-right: 1px solid #b4c2d2;
+  border-bottom: 2px solid #9aacc1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: normal;
+  position: relative;
+  overflow: visible;
+  z-index: 2;
+}
+
+.avgifter-th-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.avgifter-fee-table .tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.avgifter-fee-table .tooltip-button {
+  border: 1px solid var(--color-brand-primary);
+  background: #ffffff;
+  color: var(--color-brand-primary);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.info-tooltip-portal {
+  position: fixed;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  width: 220px;
+  max-width: calc(100vw - 16px);
+  pointer-events: none;
+  z-index: 9999;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.avgifter-fee-table thead th:nth-child(1),
+.avgifter-fee-table tbody th {
+  width: 24%;
+  position: sticky;
+  left: 0;
+  box-shadow: 2px 0 4px -2px rgba(0, 0, 0, 0.12);
+}
+
+.avgifter-fee-table thead th:nth-child(1) {
+  z-index: 4;
+}
+
+.avgifter-fee-table tbody th {
+  z-index: 2;
+}
+
+.avgifter-fee-table thead th:nth-child(2),
+.avgifter-fee-table tbody td:nth-child(2) {
+  width: 11%;
+}
+
+.avgifter-fee-table thead th:nth-child(3),
+.avgifter-fee-table tbody td:nth-child(3) {
+  width: 11%;
+}
+
+.avgifter-fee-table thead th:nth-child(4),
+.avgifter-fee-table tbody td:nth-child(4) {
+  width: 13%;
+}
+
+.avgifter-fee-table thead th:nth-child(5),
+.avgifter-fee-table tbody td:nth-child(5) {
+  width: 15%;
+}
+
+.avgifter-fee-table thead th:nth-child(6),
+.avgifter-fee-table tbody td:nth-child(6) {
+  width: 15%;
+}
+
+.avgifter-fee-table thead th:nth-child(7),
+.avgifter-fee-table tbody td:nth-child(7) {
+  width: 14%;
+}
+
+.avgifter-fee-table tbody th,
+.avgifter-fee-table tbody td {
+  padding: 8px 6px;
+  border-right: 1px solid #b4c2d2;
+  border-bottom: 1px solid #b4c2d2;
+  vertical-align: top;
+  background: #fff;
+  font-size: 0.92rem;
+}
+
+.avgifter-fee-table thead th:last-child,
+.avgifter-fee-table tbody th:last-child,
+.avgifter-fee-table tbody td:last-child {
+  border-right: 0;
+}
+
+.avgifter-fee-table tbody tr:last-child th,
+.avgifter-fee-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.avgifter-fee-table tbody th {
+  color: #0f172a;
+  font-weight: 700;
+  text-align: center;
+}
+
+.avgifter-fee-table tbody td {
+  color: #1f2937;
+  font-weight: 600;
+  text-align: center;
+}
+
+.avgifter-fee-table tbody tr:nth-child(even) th,
+.avgifter-fee-table tbody tr:nth-child(even) td {
+  background: #fbfdff;
+}
+
+.avgifter-fee-table tbody tr:nth-child(odd) th {
+  background: #fff;
+}
+
+.avgifter-fee-table tbody tr:hover th,
+.avgifter-fee-table tbody tr:hover td {
+  background: #f4f9ff;
+}
+
+.avgifter-row-title {
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.avgifter-fee-type {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #1d4f80;
+  background: #e8f1fb;
+  border: 1px solid #bfd9f4;
+  margin-top: 4px;
+}
+
+.avgifter-number-cell {
+  text-align: center;
+  white-space: normal;
+}
+
+.avgifter-period-cell {
+  white-space: normal;
+}
+
+.avgifter-period-line {
+  display: block;
+  line-height: 1.3;
+}
+
+.avgifter-highlight-basis {
+  color: #2c6ca6;
+  font-weight: 700;
+}
+
+.avgifter-footnote {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #dde5ee;
+  border-radius: 3px;
+  background: #f6f8fb;
+  color: #3f4d5c;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  font-style: italic;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .avgifter-collapsible-title {
+    padding: 12px 14px;
+    font-size: 1rem;
+  }
+
+  .avgifter-collapsible-content {
+    padding: 12px;
+  }
+
+  .avgifter-source-grid .ui-info-item {
+    min-height: 0;
+  }
+
+  .avgifter-fee-table-wrapper {
+    margin: 0 -2px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: none;
+  }
+
+  .avgifter-fee-table {
+    min-width: 750px;
+  }
+
+}

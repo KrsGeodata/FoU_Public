@@ -1,0 +1,270 @@
+.bem-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.bem-panel {
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.bem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.bem-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.bem-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: #6b7280;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.bem-close:hover {
+  background: #f1f5f9;
+  color: #1a1a1a;
+}
+
+.bem-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bem-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bem-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.bem-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+}
+
+.bem-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #dbeafe;
+}
+
+.bem-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+  min-height: 140px;
+}
+
+.bem-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #dbeafe;
+}
+
+.bem-types {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.bem-type-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.bem-scope-modes {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.bem-scope-mode {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.bem-tree {
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8fafc;
+}
+
+.bem-tree-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.bem-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.bem-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.bem-chevron:hover:not(:disabled) {
+  color: #1a1a1a;
+  background: #e5e7eb;
+}
+
+.bem-chevron:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bem-chevron svg {
+  transition: transform 0.18s ease;
+}
+
+.bem-chevron--open svg {
+  transform: rotate(90deg);
+}
+
+.bem-tree-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.bem-plots {
+  padding-left: 40px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bem-plot-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.bem-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.bem-btn--save {
+  padding: 9px 22px;
+  border: none;
+  border-radius: 6px;
+  background: #002855;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.bem-btn--save:hover:not(:disabled) {
+  background: #003c7a;
+}
+
+.bem-btn--cancel {
+  padding: 9px 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #374151;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.bem-btn--cancel:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.bem-btn--save:disabled,
+.bem-btn--cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,67 @@
+.adm-page {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-content {
+  padding: 58px 47.5px;
+}
+
+.adm-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 24px 0;
+}
+
+.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.adm-table th {
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 2px solid #e2e8f0;
+  color: #374151;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.adm-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1a1a1a;
+}
+
+.adm-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.adm-table__row--clickable {
+  cursor: pointer;
+}
+
+.adm-table__row--clickable:hover {
+  background: #eff6ff;
+}
+
+.adm-create-btn {
+  background: #002855;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.adm-create-btn:hover {
+  background: #003d80;
+}

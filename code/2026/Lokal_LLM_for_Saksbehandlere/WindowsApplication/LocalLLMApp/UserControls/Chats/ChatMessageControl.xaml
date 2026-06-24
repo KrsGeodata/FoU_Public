@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="LocalLLMApp.UserControls.Chats.ChatMessageControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalLLMApp.UserControls.Chats"
+    xmlns:fileControls="using:LocalLLMApp.UserControls.Files"
+    xmlns:models="using:LocalLLMApp.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!-- ChatMessageControl
+        - Displays a chat message with optional attachments
+        - Attachments shown above message text
+        - Uses AttachmentPillsPanel for consistent collapse/expand behavior
+    -->
+    <StackPanel Spacing="16" 
+                MaxWidth="500"
+                HorizontalAlignment="{x:Bind Alignment, Mode=OneWay}">
+
+        <!-- Attachments (read-only) -->
+        <fileControls:AttachmentPillsPanel Attachments="{x:Bind Attachments, Mode=OneWay}"
+                                       IsReadOnly="True"/>
+
+        <!-- Message Text -->
+        <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                CornerRadius="12"
+                Padding="16">
+            <TextBlock Text="{x:Bind MessageText, Mode=OneWay}"
+                       TextWrapping="Wrap"
+                       IsTextSelectionEnabled="True"/>
+        </Border>
+    </StackPanel>
+</UserControl>

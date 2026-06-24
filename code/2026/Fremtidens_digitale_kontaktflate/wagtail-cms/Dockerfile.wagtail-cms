@@ -1,0 +1,15 @@
+# Use the official Python 3.11 base image
+FROM python:3.11
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Install dependencies before copying the rest of the code for better layer caching
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Run migrations then start the server with uvicorn (same pattern as backend and matrikkel-service)
+CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && python manage.py seed_kristiansand && python manage.py seed_oslo && python manage.py seed_eidsvoll && uvicorn config.asgi:application --host 0.0.0.0 --port 8002 --reload"]

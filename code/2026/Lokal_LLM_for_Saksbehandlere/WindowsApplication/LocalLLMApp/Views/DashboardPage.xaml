@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="LocalLLMApp.Views.DashboardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalLLMApp.Views"
+    xmlns:models="using:LocalLLMApp.Models"
+    xmlns:viewModels="using:LocalLLMApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewModels:DashboardViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <NavigationView
+        x:Name="SidebarNavigationView"
+        IsSettingsVisible="False"
+        IsBackButtonVisible="Auto"
+        IsBackEnabled="{x:Bind DashboardFrame.CanGoBack, Mode=OneWay}"
+        BackRequested="NavigationView_BackRequested"
+        SelectionChanged="NavigationView_SelectionChanged"
+        PaneDisplayMode="Left"
+        ExpandedModeThresholdWidth="500"
+        SelectionFollowsFocus="Disabled"
+        IsTabStop="False"
+        OpenPaneLength="280">
+
+        <!-- Sets an image and text as the PaneHeader -->
+        <NavigationView.PaneHeader>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Spacing="8">
+
+                <!-- Image only appears if the code behind finds a valid path to an image-->
+                <Image x:Name="PaneHeaderImage"
+                       Height="25"
+                       HorizontalAlignment="Left"
+                       Stretch="Uniform"/>
+
+                <TextBlock Text="Saker og samtaler"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </NavigationView.PaneHeader>
+
+
+        <!-- Top menu items -->
+        <NavigationView.AutoSuggestBox>
+            <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" PlaceholderText="Søk..." />
+        </NavigationView.AutoSuggestBox>
+
+        <!-- Middle part of sidebar-->
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Name="CaseOverview" Content="Alle saker" Tag="LocalLLMApp.Views.CaseOverviewPage">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE8A9;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+
+            <NavigationViewItem x:Name="AllChats" Content="Alle samtaler" Tag="LocalLLMApp.Views.ChatOverviewPage">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE8BD;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+
+            <NavigationViewItemSeparator/>
+
+
+            <NavigationViewItem x:Name="NewCase" Content="Ny sak" Tag="LocalLLMApp.Views.CreateCasePage" >
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xECC8;" />
+                </NavigationViewItem.Icon>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Oppretter ny sak"/>
+                </ToolTipService.ToolTip>
+            </NavigationViewItem>
+
+            <NavigationViewItem x:Name="NewChatMenuItem" Tag="LocalLLMApp.Views.ChatPage"
+                    Content="Ny samtale"
+                    Tapped="NewChatMenuItem_Tapped">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xECC8;" />
+                </NavigationViewItem.Icon>
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Oppretter ny samtale uten kobling til sak"/>
+                </ToolTipService.ToolTip>
+            </NavigationViewItem>
+            <NavigationViewItemSeparator/>
+
+
+            <NavigationViewItem x:Name="OpenCasesItem"
+                    Content="Saker"
+                    SelectsOnInvoked="False"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    MenuItemsSource="{x:Bind ViewModel.OpenCases}">
+            </NavigationViewItem>
+            <NavigationViewItemSeparator x:Name="OpenCasesSeparator"/>
+
+            <NavigationViewItem x:Name="RecentChatsItem"
+                    Content="Nylige samtaler"
+                    SelectsOnInvoked="False"
+                    FontSize="14"
+                    FontWeight="SemiBold"                   
+                    Foreground="#C5FFFFFF"                                
+                    MenuItemsSource="{x:Bind ViewModel.RecentChats}">
+            </NavigationViewItem>
+            <NavigationViewItemSeparator x:Name="RecentChatsSeparator"/>
+
+        </NavigationView.MenuItems>
+
+        <!-- Footer menu items -->
+        <NavigationView.FooterMenuItems>
+
+            <NavigationViewItem Content="Innstillinger" Tag="LocalLLMApp.Views.SettingsPage">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE713;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+
+            <NavigationViewItem Content="Din profil" Tag="LocalLLMApp.Views.ProfilePage" SelectsOnInvoked="True">
+                <NavigationViewItem.Icon>
+                    <SymbolIcon Symbol="Contact" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+
+            <NavigationViewItem Content="Logg ut" Tag="LocalLLMApp.Views.LoginPage" SelectsOnInvoked="True">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xF3B1;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+
+        </NavigationView.FooterMenuItems>
+
+        <Frame x:Name="DashboardFrame" />
+    </NavigationView>
+
+</Page>
+

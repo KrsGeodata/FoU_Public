@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  /* Typography */
+  --font-family-base: "Lato", "Helvetica Neue", Arial, sans-serif;
+
+  /* Layout */
+  --content-max: 960px;
+  --page-pad: clamp(16px, 3vw, 24px);
+  --header-height: clamp(72px, 10vw, 120px);
+  --nav-height: 62px;
+  --logo-height: clamp(52px, 9vw, 96px);
+  --profile-size: clamp(32px, 6vw, 52px);
+  --logout-font: clamp(13px, 2vw, 16px);
+  --icon-size: clamp(18px, 3.2vw, 28px);
+  --header-gap: 20px;
+
+  /* CMS-driven color tokens — set at runtime by KommuneConfigProvider */
+  --kommune-primary:   #002855; /* fallback until fetch completes */
+  --kommune-secondary: #2e6da4;
+
+  /* Brand aliases — all component CSS files consume these unchanged */
+  --color-brand-primary:       var(--kommune-primary);
+  --color-brand-primary-hover: color-mix(in srgb, var(--kommune-primary) 80%, black);
+  --color-brand-ink:           var(--kommune-primary);
+  --focus-ring-color:          color-mix(in srgb, var(--kommune-primary) 20%, transparent);
+
+  /* Reusable surfaces and cards */
+  --surface-panel-bg: #ffffff;
+  --surface-panel-border: #e0e6ee;
+  --surface-panel-radius: 4px;
+  --surface-panel-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  --surface-info-bg: #f6f8fb;
+  --surface-info-border: #d7dee8;
+  --surface-info-radius: 3px;
+  --surface-info-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  /* Reusable spacing and text for info boxes */
+  --info-grid-gap: 16px;
+  --info-item-padding: 14px;
+  --info-label-color: #475569;
+  --info-value-color: #0f172a;
+  --text-subtle: #334155;
+
+  /* Headings */
+  --heading-size: 1.60rem;
+  --heading-color: var(--color-brand-primary);
+  --heading-font: var(--font-family-base);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-family-base);
+  background: #f6f8fb;
+  color: #1f2a36;
+}
+
+/* Keep all buttons on the same municipality font + default weight. */
+button {
+  font-family: var(--font-family-base);
+  font-weight: 500;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+/* Shared page shell used by Byggesak, Naboliste and Avgifter pages. */
+.page-layout {
+  width: 100%;
+  padding: 0 0 48px;
+}
+
+.page-panel {
+  background: var(--surface-panel-bg);
+  border: 1px solid var(--surface-panel-border);
+  border-radius: var(--surface-panel-radius);
+  padding: 20px 18px;
+  position: relative;
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Reusable panel style for page-level sections and card containers. */
+.ui-panel {
+  background: var(--surface-panel-bg);
+  border: 1px solid var(--surface-panel-border);
+  border-radius: var(--surface-panel-radius);
+  box-shadow: var(--surface-panel-shadow);
+}
+
+/* Reusable info-card styles for key/value boxes. */
+.ui-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--info-grid-gap);
+  align-items: stretch;
+}
+
+.ui-info-item {
+  background: var(--surface-info-bg);
+  border: 1px solid var(--surface-info-border);
+  border-radius: var(--surface-info-radius);
+  padding: var(--info-item-padding);
+  display: grid;
+  gap: 8px;
+  box-shadow: var(--surface-info-shadow);
+  height: 100%;
+}
+
+.ui-info-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--info-label-color);
+  font-weight: 600;
+}
+
+.ui-info-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--info-value-color);
+}
+
+/* Shared selected property chip shown in the upper right corner of page panels. */
+.selected-address-chip {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  margin: 0;
+  max-width: 45%;
+  padding: 7px 11px;
+  border: 1px solid #d7e1eb;
+  border-radius: 4px;
+  background: #f7fafd;
+  color: var(--color-brand-ink);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 700px) {
+  .selected-address-chip {
+    position: static;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.page-title {
+  margin: 0 0 10px;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  font-size: var(--heading-size);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  margin: 0 0 12px;
+  color: var(--text-subtle);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.page-text {
+  margin: 0;
+  color: #4b5563;
+}
+
+.map-disclaimer {
+  margin: 8px 0 0;
+  font-size: 0.78rem;
+  color: var(--info-label-color);
+  line-height: 1.4;
+}

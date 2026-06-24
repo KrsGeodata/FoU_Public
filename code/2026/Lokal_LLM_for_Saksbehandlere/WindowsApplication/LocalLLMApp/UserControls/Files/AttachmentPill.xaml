@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="LocalLLMApp.UserControls.Files.AttachmentPill"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UIconverters="using:LocalLLMApp.Converters.UI"
+    mc:Ignorable="d">
+
+    <!-- AttachmentPill
+        - Single file attachment pill
+        - Used in two contexts:
+            1. Editable: in AttachmentPillsPanel (ChatInputControl) with remove button
+            2. Read-only: in ChatMessageControl to show files sent with a message
+        - IsReadOnly property controls whether remove button is visible
+     -->
+
+    <Border
+        MinWidth="100"
+        MaxWidth="200"
+        Padding="10,4,10,4" 
+        Height="34"        
+        CornerRadius="14"
+        BorderThickness="1"
+        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+
+        <ToolTipService.ToolTip>
+            <ToolTip>
+                <StackPanel Spacing="4">
+                    <TextBlock Text="{x:Bind FileName, Mode=OneWay}" FontWeight="SemiBold"/>
+                    <TextBlock
+                        Text="{x:Bind UploadTime, Mode=OneWay, TargetNullValue='Ukjent tidspunkt'}"
+                        FontSize="12"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                </StackPanel>
+            </ToolTip>
+        </ToolTipService.ToolTip>
+
+        <Grid ColumnSpacing="6" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- File type icon with colored background -->
+            <Border
+                Grid.Column="0"
+                Width="20"
+                Height="20"
+                CornerRadius="4"
+                Background="{x:Bind FileExtension, Converter={StaticResource FileExtensionToColorConverter}, Mode=OneWay}">
+                <FontIcon
+                    Glyph="{x:Bind FileExtension, Converter={StaticResource FileExtensionToGlyphConverter}, Mode=OneWay}"
+                    FontSize="12"
+                    Foreground="White"/>
+            </Border>
+
+            <!-- File name -->
+            <TextBlock
+                Grid.Column="1"
+                Text="{x:Bind FileName, Mode=OneWay}"
+                VerticalAlignment="Center"
+                MaxWidth="160"
+                TextTrimming="CharacterEllipsis"
+                MaxLines="1"
+                FontSize="12"/>
+
+            <!-- Remove button -->
+            <Button
+                x:Name="RemoveButton"
+                Grid.Column="2"
+                Width="16"
+                Height="16"
+                Padding="0"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                Visibility="{x:Bind RemoveButtonVisibility, Mode=OneWay}"
+                Click="RemoveButton_Click">
+                            <FontIcon
+                    Glyph="&#xE711;"
+                    FontSize="10"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>

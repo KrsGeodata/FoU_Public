@@ -1,0 +1,55 @@
+services:
+  db:
+    image: postgres:15
+    container_name: mikro-drommeplan-db-dev
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - mikro_drommeplan_postgres_data_dev:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: mikro-drommeplan-backend-dev
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: mikro-drommeplan-frontend-dev
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_BASE=http://localhost:8000/api
+
+volumes:
+  mikro_drommeplan_postgres_data_dev:

@@ -1,0 +1,69 @@
+services:
+  db:
+    image: postgres:15
+    container_name: mikro-drommeplan-db
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - mikro_drommeplan_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - team-chi_network
+
+  backend:
+    image: ghcr.io/krsgeodata/801_26_mikro-drommeplan/backend:latest
+    pull_policy: always
+    container_name: mikro-drommeplan-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - team-chi_network
+      - atlas_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mikro-drommeplan-api.rule=Host(`geokrs.no`) && PathPrefix(`/mikro-drommeplan/api`)"
+      - "traefik.http.routers.mikro-drommeplan-api.entrypoints=web"
+      - "traefik.http.routers.mikro-drommeplan-api.priority=100"
+      - "traefik.http.middlewares.mikro-drommeplan-api-strip.stripprefix.prefixes=/mikro-drommeplan"
+      - "traefik.http.routers.mikro-drommeplan-api.middlewares=mikro-drommeplan-api-strip"
+      - "traefik.http.routers.mikro-drommeplan-api.service=mikro-drommeplan-api"
+      - "traefik.http.services.mikro-drommeplan-api.loadbalancer.server.port=8000"
+      - "traefik.docker.network=atlas_network"
+
+  frontend:
+    image: ghcr.io/krsgeodata/801_26_mikro-drommeplan/frontend:latest
+    pull_policy: always
+    container_name: mikro-drommeplan-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - atlas_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mikro-drommeplan-frontend.rule=Host(`geokrs.no`) && PathPrefix(`/mikro-drommeplan`)"
+      - "traefik.http.routers.mikro-drommeplan-frontend.entrypoints=web"
+      - "traefik.http.routers.mikro-drommeplan-frontend.priority=10"
+      - "traefik.http.middlewares.mikro-drommeplan-frontend-strip.stripprefix.prefixes=/mikro-drommeplan"
+      - "traefik.http.routers.mikro-drommeplan-frontend.middlewares=mikro-drommeplan-frontend-strip"
+      - "traefik.http.routers.mikro-drommeplan-frontend.service=mikro-drommeplan-frontend"
+      - "traefik.http.services.mikro-drommeplan-frontend.loadbalancer.server.port=80"
+      - "traefik.docker.network=atlas_network"
+
+volumes:
+  mikro_drommeplan_postgres_data:
+
+networks:
+  team-chi_network:
+    external: true
+  atlas_network:
+    external: true

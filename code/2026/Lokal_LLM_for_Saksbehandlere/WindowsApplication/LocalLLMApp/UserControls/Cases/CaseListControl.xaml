@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="LocalLLMApp.UserControls.Cases.CaseListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalLLMApp.UserControls.Cases"
+    xmlns:models="using:LocalLLMApp.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <!-- CaseListControl|
+        - Reusable control for displaying a list of cases, binds to the Case model
+        - Defines datatemplate for an instance of a case item in the list
+        - Defines a bordered scrollviewer to hold defined case items   
+    -->
+
+    <UserControl.Resources>
+    <!-- DataTemplate for CaseItem -->
+        <DataTemplate x:Key="CaseListViewTemplate" x:DataType="models:Case">
+            <Grid Background="Transparent" Margin="0,6,0,8">
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Case info -->
+            <StackPanel Grid.Column="0" 
+                                VerticalAlignment="Center"
+                                Spacing="8">
+                    <TextBlock Text="{x:Bind Title, Mode=OneWay}" 
+                                   Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+                <!-- Case creation timestamp and chat count -->
+                <StackPanel Orientation="Horizontal" Spacing="24">
+                        <TextBlock Text="{x:Bind CreatedAt, Converter={StaticResource DateTimeDisplayConverter}, Mode=OneWay}"
+                                       Style="{StaticResource CaptionTextBlockStyle}"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+
+                    <TextBlock Text="{x:Bind ChatCountDisplay}" 
+                                       Style="{StaticResource CaptionTextBlockStyle}"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- "More options" button -->
+            <Button Grid.Column="1"
+                            AutomationProperties.Name="More options" 
+                            Background="Transparent" 
+                            BorderThickness="0"
+                            Padding="8"
+                            HorizontalAlignment="Right">
+                <SymbolIcon Symbol="More"/>
+                    <Button.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                        
+                        <!-- Rename the case -->
+                            <MenuFlyoutItem Text="Gi nytt navn" Click="RenameCaseMenuFlyoutItem_Click">      
+                                <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE8AC;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                         <MenuFlyoutSeparator/>
+
+                            <!-- Archive / the case -->
+                            <MenuFlyoutItem Text="{x:Bind ArchiveMenuText}" Click="ArchiveCaseMenuFlyoutItem_Click">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="{x:Bind ArchiveMenuGlyph}"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutSeparator/>
+
+                            <!-- Delete the case -->
+                        <MenuFlyoutItem Text="Slett sak" Foreground="Red" Click="DeleteCaseMenuItem_Click">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE74D;" Foreground="Red"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                            <!-- Reopen the case // necessary?
+                        <MenuFlyoutItem Text="Åpne">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE8DA;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>-->
+
+                        </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </Grid>
+    </DataTemplate>
+        
+    </UserControl.Resources>
+
+    <!-- Bordered list area where case list instances will appear -->
+    <Border BorderBrush="{ThemeResource TextControlBorderBrush}" 
+            BorderThickness="1" 
+            CornerRadius="8"
+            Background="{ThemeResource TextControlBackground}"
+            MinWidth="320"
+            Padding="4">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+              HorizontalScrollBarVisibility="Disabled"
+              Padding="0,0,0,4">
+            <ListView HorizontalAlignment="Stretch"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      SelectionMode="None"
+                      IsItemClickEnabled="True"
+                      ItemClick="CaseListView_ItemClick"
+                      ItemsSource="{x:Bind Items, Mode=OneWay}"
+                      ItemTemplate="{StaticResource CaseListViewTemplate}"/>
+        </ScrollViewer>
+    </Border>
+    
+</UserControl>

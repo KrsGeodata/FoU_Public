@@ -1,0 +1,249 @@
+import { useState } from "react";
+import { WMSLayer, SearchResult } from "@/app/components/chat_components/types";
+import { ActiveLayerInfo } from "@/app/components/chat_components/types";
+
+export interface TrackedDataset {
+  id: string;
+  title: string;
+  wmsUrl: string;
+  availableLayers: WMSLayer[];
+  selectedLayers: string[];
+}
+
+export const useWmsManagement = () => {
+  const [wmsUrl, setWmsUrl] = useState<string>("");
+  const [availableLayers, setAvailableLayers] = useState<WMSLayer[]>([]);
+  const [selectedLayers, setSelectedLayers] = useState<string[]>([]);
+  const [trackedDatasets, setTrackedDatasets] = useState<TrackedDataset[]>([]);
+  const [isDuplicateAlertOpen, setIsDuplicateAlertOpen] = useState(false);
+  const [duplicateDatasetTitle, setDuplicateDatasetTitle] = useState("");
+
+  const fetchWMSInfo = async (urlToFetch?: string, datasetId?: string) => {
+    if (!urlToFetch && !wmsUrl) {
+      return { available_layers: [] };
+    }
+
+    try {
+      const apiUrl = `http://127.0.0.1:5000/wms-info?url=${encodeURIComponent(
+        urlToFetch || wmsUrl
+      )}`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+
+      if (datasetId) {
+        setTrackedDatasets((prevDatasets) =>
+          prevDatasets.map((dataset) =>
+            dataset.id === datasetId
+              ? {
+                  ...dataset,
+                  availableLayers: data.available_layers,
+                  selectedLayers:
+                    dataset.selectedLayers.length > 0
+                      ? dataset.selectedLayers
+                      : data.available_layers.length > 0
+                      ? [data.available_layers[0].name]
+                      : [],
+                }
+              : dataset
+          )
+        );
+      } else {
+        setAvailableLayers(data.available_layers);
+        if (data.available_layers.length > 0 && selectedLayers.length === 0) {
+          setSelectedLayers([data.available_layers[0].name]);
+        }
+      }
+
+      return data;
+    } catch (error) {
+      console.error("Error fetching WMS info:", error);
+      return { available_layers: [] };
+    }
+  };
+
+  const replaceIframe = async (wmsUrl: string | { wms_url: string; available_layers?: WMSLayer[]; title?: string }, datasetTitle?: string) => {
+    if (
+      !wmsUrl ||
+      wmsUrl === "NONE" ||
+      (typeof wmsUrl === "string" && wmsUrl.toLowerCase() === "none")
+    ) {
+      alert(`Invalid or missing WMS URL: ${wmsUrl || "none provided"}`);
+      return;
+    }
+
+    let processedWmsUrl: string;
+    let extractedLayers: WMSLayer[] = [];
+    let extractedTitle: string | undefined = datasetTitle;
+
+    if (typeof wmsUrl === "object" && wmsUrl.wms_url) {
+      processedWmsUrl = wmsUrl.wms_url;
+      extractedLayers = wmsUrl.available_layers || [];
+      extractedTitle = wmsUrl.title || datasetTitle;
+    } else {
+      try {
+        const wmsData =
+          typeof wmsUrl === "string" && wmsUrl.startsWith("{")
+            ? JSON.parse(wmsUrl)
+            : { wms_url: wmsUrl };
+
+        if (wmsData.wms_url) {
+          processedWmsUrl = wmsData.wms_url;
+          extractedLayers = wmsData.available_layers || [];
+          extractedTitle = wmsData.title || datasetTitle;
+        } else {
+          processedWmsUrl = typeof wmsUrl === 'string' ? wmsUrl : wmsUrl.wms_url;
+        }
+      } catch (error) {
+        console.error("Error when parsing WMS URL:", error);
+        processedWmsUrl = typeof wmsUrl === 'string' ? wmsUrl : wmsUrl.wms_url;
+      }
+    }
+
+    const baseWmsUrl = processedWmsUrl.split("?")[0];
+    const isDuplicate = trackedDatasets.some((dataset) => {
+      const existingBaseUrl = dataset.wmsUrl.split("?")[0];
+      return existingBaseUrl === baseWmsUrl;
+    });
+
+    if (isDuplicate) {
+      setDuplicateDatasetTitle(extractedTitle || "Dette datasettet");
+      setIsDuplicateAlertOpen(true);
+      return;
+    }
+
+    const datasetId = `dataset-${Date.now()}`;
+    const title = extractedTitle || `Dataset ${trackedDatasets.length + 1}`;
+
+    if (extractedLayers.length === 0) {
+      const layerData = await fetchWMSInfo(processedWmsUrl);
+      extractedLayers = layerData.available_layers || [];
+    }
+
+    const newDataset: TrackedDataset = {
+      id: datasetId,
+      title: title,
+      wmsUrl: processedWmsUrl,
+      availableLayers: extractedLayers,
+      selectedLayers:
+        extractedLayers.length > 0 ? [extractedLayers[0].name] : [],
+    };
+
+    setTrackedDatasets((prev) => [...prev, newDataset]);
+  };
+
+  const removeTrackedDataset = (datasetId: string) => {
+    setTrackedDatasets((prev) =>
+      prev.filter((dataset) => dataset.id !== datasetId)
+    );
+  };
+
+  const handleLayerChangeWithDataset = (
+    datasetId: string,
+    layerName: string,
+    isChecked: boolean
+  ) => {
+    setTrackedDatasets((prevDatasets) =>
+      prevDatasets.map((dataset) =>
+        dataset.id === datasetId
+          ? {
+              ...dataset,
+              selectedLayers: isChecked
+                ? [...dataset.selectedLayers, layerName]
+                : dataset.selectedLayers.filter(
+                    (name: string) => name !== layerName
+                  ),
+            }
+          : dataset
+      )
+    );
+  };
+
+  const addFirstWmsLayerFromSearchResult = async (
+    searchResult: SearchResult,
+    activeMapLayers: ActiveLayerInfo[],
+    setActiveMapLayers: React.Dispatch<React.SetStateAction<ActiveLayerInfo[]>>
+  ) => {
+    console.log(searchResult, "searchResult");
+    if (
+      !searchResult.wmsUrl ||
+      'loading' in searchResult.wmsUrl ||
+      'error' in searchResult.wmsUrl ||
+      !searchResult.wmsUrl.wms_url ||
+      !searchResult.wmsUrl.available_layers ||
+      searchResult.wmsUrl.available_layers.length === 0
+    ) {
+      console.warn(
+        "[addFirstWmsLayerFromSearchResult] Search result is missing WMS URL or available layers.",
+        searchResult.wmsUrl
+      );
+      return;
+    }
+
+    const firstLayer = searchResult.wmsUrl.available_layers[0];
+    const sourceUrl = searchResult.wmsUrl.wms_url;
+    const sourceUuid = searchResult.uuid;
+    const sourceTitle = searchResult.title || "Ukjent Kilde";
+    const layerName = firstLayer.name;
+    const layerTitle = firstLayer.title || layerName;
+    const uniqueLayerId = `${sourceUuid}-${layerName}`;
+
+    const isDuplicate = activeMapLayers.some((activeLayer) => {
+      const sameUrl = activeLayer.sourceUrl === sourceUrl;
+      const sameName = activeLayer.name === layerName;
+      if (sameUrl && sameName) {
+        console.log(
+          `[addFirstWmsLayerFromSearchResult] Duplicate found: Active layer ID ${activeLayer.id} (Source: ${activeLayer.sourceTitle}) matches new layer ${layerName} from ${sourceUrl}`
+        );
+      }
+      return sameUrl && sameName;
+    });
+
+    if (isDuplicate) {
+      console.warn(
+        `[addFirstWmsLayerFromSearchResult] Layer "${layerTitle}" from WMS "${sourceUrl}" is already active. Aborting add.`
+      );
+      return;
+    }
+
+    const newLayerInfo: ActiveLayerInfo = {
+      id: uniqueLayerId,
+      name: layerName,
+      title: layerTitle,
+      sourceUrl: sourceUrl,
+      sourceTitle: sourceTitle,
+      sourceUuid: sourceUuid,
+    };
+
+    console.log(
+      "[addFirstWmsLayerFromSearchResult] Adding new layer:",
+      newLayerInfo
+    );
+    setActiveMapLayers((prevLayers) => {
+      if (prevLayers.some((l) => l.id === newLayerInfo.id)) {
+        console.warn(
+          `[addFirstWmsLayerFromSearchResult] ID collision detected for ${newLayerInfo.id}, skipping add.`
+        );
+        return prevLayers;
+      }
+      return [...prevLayers, newLayerInfo];
+    });
+  };
+
+  return {
+    wmsUrl,
+    availableLayers,
+    selectedLayers,
+    trackedDatasets,
+    isDuplicateAlertOpen,
+    duplicateDatasetTitle,
+    setWmsUrl,
+    setAvailableLayers,
+    setSelectedLayers,
+    setIsDuplicateAlertOpen,
+    fetchWMSInfo,
+    replaceIframe,
+    removeTrackedDataset,
+    handleLayerChangeWithDataset,
+    addFirstWmsLayerFromSearchResult,
+  };
+};

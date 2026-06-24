@@ -1,0 +1,41 @@
+.adm-page {
+	font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+}
+
+.editor-wrap {
+	padding: 32px 48px 48px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+/* ── Laster ──────────────────────────────────────────────────── */
+
+.editor-loading {
+	color: #9ca3af;
+	text-align: center;
+	margin-top: 64px;
+	font-size: 15px;
+}
+
+/* ── Tokolonne-layout ────────────────────────────────────────── */
+
+.editor-layout {
+	display: flex;
+	gap: 24px;
+	align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+	.editor-layout {
+		flex-direction: column;
+	}
+
+	.editor-wrap {
+		padding: 20px 20px 40px;
+	}
+}

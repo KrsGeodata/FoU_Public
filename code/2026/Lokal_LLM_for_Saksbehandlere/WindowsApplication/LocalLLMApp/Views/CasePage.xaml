@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="LocalLLMApp.Views.CasePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalLLMApp.Views"
+    xmlns:chatsUserControls="using:LocalLLMApp.UserControls.Chats"
+    xmlns:filesUserControls="using:LocalLLMApp.UserControls.Files"
+    xmlns:viewModels="using:LocalLLMApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!-- View TODO list:
+    - Replace hardcoded MaxHeight on KilderBorder and FileListControl with
+     AdaptiveTrigger VisualStates based on MinWindowHeight for short/tall window layouts 
+    -->
+
+    <!-- Core Page Layout: Two main content panels, column 0 and 1 -->
+    <Grid Padding="36,40,36,24" RowSpacing="8" ColumnSpacing="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition MaxWidth="320" Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ** Start left content panel (column 0); case info and chat area ** -->
+        <Grid Grid.Column="0"
+              HorizontalAlignment="Stretch"
+              MinWidth="320"
+              RowSpacing="16">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Case title and summary -->
+            <StackPanel Grid.Row="0" Visibility="{x:Bind ViewModel.ContentVisibility, Mode=OneWay}">
+                <TextBlock Text="{x:Bind ViewModel.CaseTitle, Mode=OneWay}" 
+                           Style="{StaticResource TitleLargeTextBlockStyle}"
+                           ToolTipService.ToolTip="Sakstittel"/>
+                <!--Case description/summary-->
+                <TextBlock Text="{x:Bind ViewModel.CaseDescription, Mode=OneWay}"
+                           ToolTipService.ToolTip="Saksbeskrivelse"
+                           MaxLines="2" 
+                           TextWrapping="Wrap" 
+                           TextTrimming="CharacterEllipsis"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="0"
+               Text="Ingen sak er valgt"
+               Visibility="{x:Bind ViewModel.EmptyStateVisibility, Mode=OneWay}"
+               Style="{StaticResource TitleLargeTextBlockStyle}"
+               HorizontalAlignment="Left"/>
+
+            <!-- User text input components -->
+            <chatsUserControls:ChatInputControl 
+                PlaceholderText="Skriv en melding for å starte en ny samtale..."
+                Grid.Row="1"
+                MessageInput="{x:Bind ViewModel.MessageInput, Mode=TwoWay}"
+                Attachments="{x:Bind ViewModel.PendingChatAttachments, Mode=OneWay}"
+                SendRequested="ChatInputControl_SendRequested"
+                AddFilesRequested="ChatInputControl_AddFilesRequested"
+                AttachmentRemoved="ChatInputControl_AttachmentRemoved"/>
+
+            <!-- Previous case chats: takes remaining space -->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Text="Tilhørende samtaler" 
+                           Style="{StaticResource TitleTextBlockStyle}" 
+                           Margin="0,0,0,12"/>
+
+                <chatsUserControls:ChatListControl 
+                          Grid.Row="1" 
+                          Items="{x:Bind ViewModel.Chats, Mode=OneWay}"
+                          IsEmpty="{x:Bind ViewModel.IsChatsEmpty, Mode=OneWay}"           
+                          ChatItemClicked="ChatListControl_ChatItemClicked"
+                          DeleteChatRequested="DeleteChatMenuFlyoutItem_Clicked"
+                          RenameChatRequested="ChatListControl_RenameChatRequested"/>
+            </Grid>
+        </Grid>
+        <!-- ** End left content panel (column 0); case info and chat area ** -->
+
+
+        <!-- ** Start right content panel (column 1); context area ** -->
+        <Border Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,20,0,0"
+                BorderBrush="{ThemeResource TextControlBorderBrush}" 
+                BorderThickness="1" 
+                CornerRadius="8"
+                Background="{ThemeResource TextControlBackground}"
+                Padding="16,16,16,16"
+                MaxHeight="800"
+                MinWidth="320"
+                MaxWidth="320">
+
+            <Grid RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- "Kilder" title -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Subtitle "Filer og vedlegg" -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- FileListControl -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- "Drag and drop" content-->
+                </Grid.RowDefinitions>
+
+                <!-- Title "Kilder" -->
+                <TextBlock Grid.Row="0"
+                           Text="Kilder" 
+                           Style="{StaticResource TitleTextBlockStyle}"/>
+
+                <!-- Files and other media -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" 
+                               Text="Filer og vedlegg" 
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <!-- Files and other media contents - from FileListControl -->
+                <filesUserControls:FileListControl 
+                       Grid.Row="2"
+                       MaxHeight="400"                       
+                       Items="{x:Bind ViewModel.FilesInfo, Mode=OneWay}"
+                       RemoveSingleFile="FileListControl_FileRemoved"
+                       RemoveMultipleFiles="FileListControl_FilesRemoved"/>
+
+                <!-- Drag and drop area -->
+                <filesUserControls:FileDragAndDropControl 
+                    x:Name="FileDropControl"
+                    Grid.Row="3"
+                    IsCompact="True"
+                    Margin="0,6,0,6"
+                    FilesAdded="FileDragAndDropControl_FilesAdded"/>
+            </Grid>
+        </Border>
+        <!-- End right content panel; context area -->
+    </Grid>
+</Page>

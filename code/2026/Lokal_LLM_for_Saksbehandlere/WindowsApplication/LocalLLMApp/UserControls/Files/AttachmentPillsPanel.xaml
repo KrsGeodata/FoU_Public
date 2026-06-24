@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="LocalLLMApp.UserControls.Files.AttachmentPillsPanel"
+    x:Name="RootPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fileControls="using:LocalLLMApp.UserControls.Files"
+    xmlns:models="using:LocalLLMApp.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!-- Hidden when no attachments, visible when count > 0 -->
+    <StackPanel Spacing="8"
+                Visibility="{x:Bind PanelVisibility, Mode=OneWay}">
+
+        <!-- Collapsed state: show count + expand button (when > 2 files) -->
+        <Button
+            x:Name="CollapsedButton"
+            Visibility="{x:Bind IsCollapsed, Mode=OneWay}"
+            Click="ToggleExpand_Click"
+            Padding="12,6"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <FontIcon Glyph="&#xE723;" FontSize="14"/>
+                <TextBlock>
+                    <Run Text="{x:Bind AttachmentCount, Mode=OneWay}"/>
+                    <Run Text=" files attached"/>
+                </TextBlock>
+                <FontIcon Glyph="&#xE70D;" FontSize="12"/>
+            </StackPanel>
+        </Button>
+
+        <!-- Expanded state: show all pills (always when <= 2, toggle when > 2) -->
+        <!-- Bytt ExpandedPanel StackPanel med dette: -->
+        <Border
+            x:Name="ExpandedPanel"
+            Visibility="{x:Bind IsExpanded, Mode=OneWay}"
+            CornerRadius="8"
+            Padding="8">
+            <StackPanel Spacing="8">
+                <ScrollViewer MaxHeight="200" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Attachments, ElementName=RootPanel}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="10"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="models:FilesInfo">
+                                <fileControls:AttachmentPill
+                                        Margin="0, 0, 10, 0"
+                                        FileName="{x:Bind FileName, Mode=OneWay}"
+                                        FileExtension="{x:Bind FileExtension, Mode=OneWay}"
+                                        UploadTime="{x:Bind UploadedAt, Mode=OneWay, TargetNullValue='Ikke lastet opp enda'}"
+                
+                                        IsReadOnly="{Binding IsReadOnly, ElementName=RootPanel}"                
+                                        RemoveRequested="AttachmentPill_RemoveRequested"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                <Button
+                        Visibility="{x:Bind IsCollapsible, Mode=OneWay}"
+                        Click="ToggleExpand_Click"
+                        HorizontalAlignment="Left"
+                        Padding="8,4"
+                        Background="Transparent">
+                    <StackPanel Orientation="Horizontal" Spacing="4">
+                        <FontIcon Glyph="&#xE70E;" FontSize="10"/>
+                        <TextBlock Text="Show less" FontSize="12"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

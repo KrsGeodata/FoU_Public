@@ -1,0 +1,166 @@
+services:
+  database:
+    container_name: eiendom_db
+    build:
+      context: ./database
+      dockerfile: Dockerfile.database
+    restart: always
+    env_file:
+      - ./database/db.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/data/postgres:/var/lib/postgresql/data
+    networks:
+      - database
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    restart: always
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - frontend
+
+  cms-service:
+    environment:
+      - DEMO_MODE=true
+    build:
+      context: ./cms-service
+      dockerfile: Dockerfile.cms-service
+    restart: always
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./cms-service:/app
+    env_file:
+      - ./cms-service/cms-service.env
+    depends_on:
+      - wagtail-cms
+    networks:
+      - cms
+
+  backend:
+    environment:
+      - DEMO_MODE=true
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - database
+      - matrikkel-service
+      - arkiv-service
+      - cms-service
+      - renovasjon-service
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/backend.env
+    networks:
+      - database
+      - frontend
+      - cms
+
+  matrikkel-service:
+    environment:
+      - DEMO_MODE=true
+    build:
+      context: ./matrikkel-service
+      dockerfile: Dockerfile.matrikkel-service
+    restart: always
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./matrikkel-service:/app
+    env_file:
+      - ./matrikkel-service/matrikkel.env
+    depends_on:
+      - database
+    networks:
+      - database
+      - frontend
+
+  arkiv-service:
+    environment:
+      - DEMO_MODE=true
+    build:
+      context: ./arkiv-service
+      dockerfile: Dockerfile.arkiv-service
+    restart: always
+    ports:
+      - "8005:8005"
+    volumes:
+      - ./arkiv-service:/app
+    env_file:
+      - ./arkiv-service/arkiv.env
+    depends_on:
+      - database
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8005/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - database
+      - frontend
+
+  renovasjon-service:
+    environment:
+      - DEMO_MODE=true
+    build:
+      context: ./renovasjon-service
+      dockerfile: Dockerfile.renovasjon-service
+    restart: always
+    ports:
+      - "8004:8004"
+    volumes:
+      - ./renovasjon-service:/app
+    env_file:
+      - ./renovasjon-service/renovasjon-service.env
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8004/health')\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - frontend
+
+  wagtail-cms:
+    environment:
+      - DEMO_MODE=true
+    build:
+      context: ./wagtail-cms
+      dockerfile: Dockerfile.wagtail-cms
+    restart: always
+    ports:
+      - "8002:8002"
+    volumes:
+      # Mount source code for hot-reloading during development
+      - ./wagtail-cms:/app
+    env_file:
+      - ./wagtail-cms/cms.env
+    depends_on:
+      - database
+    networks:
+      - database
+      - cms
+
+networks:
+  database:
+    driver: bridge
+  frontend:
+    driver: bridge
+  cms:
+    driver: bridge

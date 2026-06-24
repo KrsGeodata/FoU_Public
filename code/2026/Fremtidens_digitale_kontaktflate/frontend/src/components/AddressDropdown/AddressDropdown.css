@@ -1,0 +1,61 @@
+/* Fallback chip shown when user has only one address — mirrors the global .selected-address-chip */
+.address-chip {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  margin: 0;
+  max-width: 45%;
+  padding: 7px 11px;
+  border: 1px solid #d7e1eb;
+  border-radius: 4px;
+  background: #f7fafd;
+  color: var(--color-brand-ink);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 720px) {
+  .address-chip {
+    position: static;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.address-dropdown {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  max-width: 45%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #d7e1eb;
+  border-radius: 4px;
+  background: #f7fafd;
+  color: var(--color-brand-ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23647586' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.address-dropdown:focus {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 1px;
+}
+
+@media (max-width: 720px) {
+  .address-dropdown {
+    position: static;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

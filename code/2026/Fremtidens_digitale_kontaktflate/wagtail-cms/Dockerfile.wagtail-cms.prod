@@ -1,0 +1,20 @@
+# Stage 1 — install dependencies
+FROM python:3.11 AS builder
+
+WORKDIR /app
+RUN python -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Stage 2 — runtime
+FROM python:3.11-slim
+
+COPY --from=builder /venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+WORKDIR /app
+COPY . .
+
+CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && python manage.py createsuperuser --noinput || true && python manage.py seed_kristiansand || true && python manage.py seed_oslo || true && python manage.py seed_eidsvoll || true && uvicorn config.asgi:application --host 0.0.0.0 --port 8002 --workers 2"]

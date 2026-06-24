@@ -1,0 +1,8 @@
+# Development / test dependencies. Installed in CI on top of requirements.txt.
+# Production container image does not include these.
+-r requirements.txt
+
+pytest==8.3.3
+pytest-cov==6.0.0
+httpx==0.28.1
+testcontainers[postgres]==4.9.0

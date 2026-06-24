@@ -1,0 +1,65 @@
+services:
+  backend:
+    build: ./backend_api
+    container_name: fastapi_backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+
+      # Backend routing
+      - "traefik.http.routers.dibk-backend.rule=Host(`dibkveiviser.geokrs.no`) && PathPrefix(`/api/`)"
+      - "traefik.http.routers.dibk-backend.priority=100"
+      - "traefik.http.routers.dibk-backend.entrypoints=web"
+
+      # Strip /api/ prefix
+      - "traefik.http.middlewares.dibk-backend-strip.stripprefix.prefixes=/api/"
+
+      # Basic auth middleware for backend
+      - "traefik.http.middlewares.dibk-backend-auth.basicauth.users=fou:$$2b$$05$$fp0T5mJB302Xs3C641l.W.QmwBld77meMt8tOf1hlqLHmvnZAE2si"
+
+      # Attach strip and auth to backend router
+      - "traefik.http.routers.dibk-backend.middlewares=dibk-backend-strip,dibk-backend-auth"
+
+      # Backend service port
+      - "traefik.http.routers.dibk-backend.service=dibk-backend"
+      - "traefik.http.services.dibk-backend.loadbalancer.server.port=8000"
+
+      # Ensure traefik connects through the correct Docker network
+      - "traefik.docker.network=atlas_network"
+    networks:
+      - atlas_network
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://dibkveiviser.geokrs.no/api
+    container_name: react_frontend
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+
+      # Frontend routing (everything except /api goes here)
+      - "traefik.http.routers.dibk-frontend.rule=Host(`dibkveiviser.geokrs.no`) && !PathPrefix(`/api/`)"
+      - "traefik.http.routers.dibk-frontend.entrypoints=web"
+
+      # Basic auth middleware for frontend
+      - "traefik.http.middlewares.dibk-frontend-auth.basicauth.users=fou:$$2b$$05$$fp0T5mJB302Xs3C641l.W.QmwBld77meMt8tOf1hlqLHmvnZAE2si"
+
+      # Attach auth to frontend router
+      - "traefik.http.routers.dibk-frontend.middlewares=dibk-frontend-auth"
+
+      # Frontend service port
+      - "traefik.http.routers.dibk-frontend.service=dibk-frontend"
+      - "traefik.http.services.dibk-frontend.loadbalancer.server.port=80"
+
+      # Ensure Traefik connects through the correct Docker network
+      - "traefik.docker.network=atlas_network"
+    networks:
+      - atlas_network
+
+networks:
+  atlas_network:
+    external: true

@@ -1,0 +1,116 @@
+.nav {
+  position: relative;
+  top: 0;
+  background: color-mix(in srgb, var(--kommune-primary) 8%, white);
+  border-bottom: 1px solid #e0e6ee;
+  width: 100%;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--nav-height);
+  padding: 10px var(--page-pad);
+  max-width: var(--content-max);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.nav-link {
+  text-decoration: none;
+  background: #ffffff;
+  color: var(--color-brand-primary);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 2px;
+  transition: background 0.15s ease;
+}
+
+.nav-link:hover {
+  background: var(--color-brand-primary);
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background: var(--color-brand-primary);
+}
+
+.nav-logout-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #d0d9e4;
+  background: #ffffff;
+  color: var(--color-brand-primary);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.nav-logout-button:hover {
+  background: #f3f6fb;
+}
+
+.nav-logout-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    background: transparent;
+    border-bottom: none;
+  }
+
+  .nav.is-open {
+    background: color-mix(in srgb, var(--kommune-primary) 8%, white);
+    border-bottom: 1px solid #e0e6ee;
+  }
+
+  .nav-inner {
+    display: block;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .nav-link {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-logout-button {
+    display: inline-flex;
+    width: 100%;
+  }
+}

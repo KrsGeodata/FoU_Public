@@ -1,0 +1,469 @@
+{
+  "metadata": {
+    "tittel": "Hentedatoer for søppel i Norge – Oversikt over renovasjonsselskaper og systemleverandører",
+    "kilde": "Norkart KOMTEK, selskapenes egne nettsider, Home Assistant-community",
+    "sist_oppdatert": "2026-03"
+  },
+  "renovasjonsselskaper": [
+    {
+      "region": "Romerike",
+      "selskap": "ROAF – Romerike Avfallsforedling IKS",
+      "kommuner": ["Lillestrøm", "Lørenskog", "Nittedal", "Rælingen", "Gjerdrum", "Enebakk", "Aurskog-Høland"],
+      "fylke": "Akershus",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Øvre Romerike",
+      "selskap": "ØRAS – Øvre Romerike Avfallsselskap IKS",
+      "kommuner": ["Eidsvoll", "Hurdal", "Nannestad", "Ullensaker"],
+      "fylke": "Akershus",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Follo",
+      "selskap": "FoRen – Follo Ren IKS",
+      "kommuner": ["Nordre Follo", "Frogn", "Nesodden", "Ås"],
+      "fylke": "Akershus",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "Tidligere FolloRen"
+    },
+    {
+      "region": "Innlandet – Hamar-regionen",
+      "selskap": "Sirkula IKS",
+      "kommuner": ["Hamar", "Ringsaker", "Stange", "Løten"],
+      "fylke": "Innlandet",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "Bruker komteksky.norkart.no API"
+    },
+    {
+      "region": "Innlandet – Gjøvik-regionen",
+      "selskap": "Horisont IKS / Horisont Miljøpark",
+      "kommuner": ["Gjøvik", "Vestre Toten", "Østre Toten", "Søndre Land", "Nordre Land"],
+      "fylke": "Innlandet",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Innlandet – Glåmdalen",
+      "selskap": "GIR – Glåmdal Interkommunale Renovasjonsselskap",
+      "kommuner": ["Kongsvinger", "Sør-Odal", "Nord-Odal", "Eidskog"],
+      "fylke": "Innlandet",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Drammensregionen",
+      "selskap": "RfD – Renovasjonsselskapet for Drammensregionen",
+      "kommuner": ["Drammen", "Lier", "Modum", "Sigdal", "Øvre Eiker"],
+      "fylke": "Viken/Numedal",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Oslo",
+      "selskap": "Oslo kommune / REN",
+      "kommuner": ["Oslo"],
+      "fylke": "Oslo",
+      "hentedato_system": "Eget system – oslo.kommune.no/avfall",
+      "api_leverandor": "Oslo kommune (eget)",
+      "api_endepunkt": "oslo.kommune.no",
+      "merknad": "Egen nettside og app. Ikke KOMTEK."
+    },
+    {
+      "region": "Nedre Glomma",
+      "selskap": "ØIR – Østfold Interkommunale Renovasjonsselskap",
+      "kommuner": ["Fredrikstad", "Sarpsborg", "Hvaler", "Råde"],
+      "fylke": "Østfold",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Indre Østfold",
+      "selskap": "Indre Østfold Renovasjon IKS",
+      "kommuner": ["Indre Østfold", "Marker", "Rakkestad"],
+      "fylke": "Østfold",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Halden",
+      "selskap": "Halden kommune (egenregi)",
+      "kommuner": ["Halden"],
+      "fylke": "Østfold",
+      "hentedato_system": "Ukjent / Eget",
+      "api_leverandor": null,
+      "api_endepunkt": null,
+      "merknad": "Innsamling via Ragn-Sells"
+    },
+    {
+      "region": "Agder – Arendal/Grimstad",
+      "selskap": "Agder Renovasjon IKS",
+      "kommuner": ["Arendal", "Grimstad", "Froland"],
+      "fylke": "Agder",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "Bruker MinRenovasjon-appen"
+    },
+    {
+      "region": "Agder – Kristiansand",
+      "selskap": "Avfall Sør IKS",
+      "kommuner": ["Kristiansand", "Vennesla", "Songdalen", "Søgne"],
+      "fylke": "Agder",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Agder – Vest",
+      "selskap": "RFL – Renovasjonsselskapet for Farsund og Lyngdal",
+      "kommuner": ["Farsund", "Lyngdal"],
+      "fylke": "Agder",
+      "hentedato_system": "Eget system / KOMTEK",
+      "api_leverandor": "Norkart (antatt)",
+      "api_endepunkt": null,
+      "merknad": "Usikkert – bør verifiseres"
+    },
+    {
+      "region": "Bergensregionen",
+      "selskap": "BIR AS – Bergensområdets Interkommunale Renovasjon",
+      "kommuner": ["Bergen", "Askøy", "Osterøy", "Vaksdal", "Os", "Samnanger", "Kvam", "Fusa", "Sund"],
+      "fylke": "Vestland",
+      "hentedato_system": "Eget system – bir.no/adressesoek",
+      "api_leverandor": "BIR (egenutviklet)",
+      "api_endepunkt": "bir.no/adressesoek",
+      "merknad": "Har eget REST-API, ikke KOMTEK. Adressesøk på bir.no."
+    },
+    {
+      "region": "Nordhordland",
+      "selskap": "NGIR – Nordhordland og Gulen Interkommunale Renovasjon",
+      "kommuner": ["Alver", "Austrheim", "Fedje", "Gulen", "Masfjorden", "Modalen"],
+      "fylke": "Vestland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Sunnhordland",
+      "selskap": "SIM – Sunnhordland Interkommunale Miljøverk",
+      "kommuner": ["Stord", "Bømlo", "Fitjar", "Kvinnherad", "Sveio", "Tysnes", "Austevoll"],
+      "fylke": "Vestland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Sogn",
+      "selskap": "SIMAS – Sogn Interkommunale Miljø- og Avfallsselskap IKS",
+      "kommuner": ["Sogndal", "Luster", "Lærdal", "Årdal", "Aurland", "Høyanger", "Vik"],
+      "fylke": "Vestland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Sunnfjord",
+      "selskap": "Sunnfjord Miljøverk IKS",
+      "kommuner": ["Førde", "Naustdal", "Fjaler", "Gaular", "Jølster", "Askvoll", "Hyllestad"],
+      "fylke": "Vestland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Nordfjord",
+      "selskap": "Nordfjord Miljøverk IKS",
+      "kommuner": ["Stryn", "Gloppen", "Eid", "Selje", "Vågsøy", "Bremanger"],
+      "fylke": "Vestland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Stavanger-regionen",
+      "selskap": "IVAR IKS – Interkommunalt Vann, Avløp og Renovasjon",
+      "kommuner": ["Stavanger", "Sandnes", "Randaberg", "Sola", "Klepp", "Hå", "Gjesdal", "Strand", "Time"],
+      "fylke": "Rogaland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Ryfylke",
+      "selskap": "RYMI IKS – Ryfylke Miljøverk",
+      "kommuner": ["Hjelmeland", "Suldal", "Sauda", "Vindafjord"],
+      "fylke": "Rogaland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Ålesund-regionen",
+      "selskap": "ÅRIM – Ålesundregionens Interkommunale Miljøselskap",
+      "kommuner": ["Ålesund", "Sula", "Giske", "Haram", "Sandøy", "Skodje", "Ørskog"],
+      "fylke": "Møre og Romsdal",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Romsdal / Nordmøre",
+      "selskap": "VØR / ReMidt IKS",
+      "kommuner": ["Molde", "Rauma", "Aukra", "Fræna", "Vestnes"],
+      "fylke": "Møre og Romsdal",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Trondheim og omegn",
+      "selskap": "TrøndelagRenovasjon / Retura Trondheim IKS",
+      "kommuner": ["Trondheim", "Malvik", "Klæbu", "Melhus", "Skaun"],
+      "fylke": "Trøndelag",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Innherred",
+      "selskap": "Innherred Renovasjon IKS",
+      "kommuner": ["Verdal", "Levanger", "Inderøy", "Steinkjer"],
+      "fylke": "Trøndelag",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Namdalen",
+      "selskap": "MNA – Midtre Namdal Avfallsselskap IKS",
+      "kommuner": ["Namsos", "Overhalla", "Flatanger", "Grong"],
+      "fylke": "Trøndelag",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "12 eierkommuner totalt"
+    },
+    {
+      "region": "Helgeland",
+      "selskap": "Helgeland Miljøverk IKS",
+      "kommuner": ["Rana", "Hemnes", "Nesna", "Lurøy", "Træna", "Rødøy"],
+      "fylke": "Nordland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Salten",
+      "selskap": "IRIS – Salten Interkommunale Renovasjonsselskap",
+      "kommuner": ["Bodø", "Fauske", "Saltdal", "Steigen", "Beiarn", "Gildeskål"],
+      "fylke": "Nordland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Lofoten / Vesterålen",
+      "selskap": "RENO-VEST IKS",
+      "kommuner": ["Hadsel", "Sortland", "Øksnes", "Bø", "Andøy", "Lødingen"],
+      "fylke": "Nordland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Tromsø-regionen",
+      "selskap": "Remiks Miljøpark IKS",
+      "kommuner": ["Tromsø", "Balsfjord"],
+      "fylke": "Troms",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Sør-Troms / Harstad",
+      "selskap": "SAREN IKS",
+      "kommuner": ["Harstad", "Kvæfjord", "Tjeldsund"],
+      "fylke": "Troms",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": ""
+    },
+    {
+      "region": "Finnmark",
+      "selskap": "Finnmark kommuner (varierende)",
+      "kommuner": ["Alta", "Hammerfest", "Vadsø", "Kirkenes"],
+      "fylke": "Finnmark",
+      "hentedato_system": "Varierende – noen bruker MinRenovasjon",
+      "api_leverandor": "Norkart / lokalt",
+      "api_endepunkt": null,
+      "merknad": "Noen kommuner har egne løsninger"
+    },
+    {
+      "region": "Trøndelag – Inntrøndelag",
+      "selskap": "Inntrøndelag Renovasjon IKS",
+      "kommuner": ["Stjørdal", "Frosta", "Meråker", "Selbu", "Tydal"],
+      "fylke": "Trøndelag",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified company name"
+    },
+    {
+      "region": "Trøndelag – Orkland-regionen",
+      "selskap": "Orkland-regionen (kommunalt/IKS)",
+      "kommuner": ["Orkland", "Midtre Gauldal", "Rennebu", "Oppdal", "Ørland", "Indre Fosen"],
+      "fylke": "Trøndelag",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified – sammenslåingskommune, avfallshåndtering ikke bekreftet"
+    },
+    {
+      "region": "Trøndelag – Kyst",
+      "selskap": "Himos IKS / kommunalt",
+      "kommuner": ["Heim", "Hitra", "Frøya", "Åfjord", "Rindal"],
+      "fylke": "Trøndelag",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified company name"
+    },
+    {
+      "region": "Nordmøre",
+      "selskap": "Renovasjon IKS Midt",
+      "kommuner": ["Kristiansund", "Averøy", "Tingvoll", "Sunndal", "Surnadal", "Smøla", "Aure"],
+      "fylke": "Møre og Romsdal",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified – covers Nordmøre region"
+    },
+    {
+      "region": "Haugaland",
+      "selskap": "Haugaland Avfall IKS",
+      "kommuner": ["Haugesund", "Kvitsøy", "Bokn", "Tysvær", "Utsira"],
+      "fylke": "Rogaland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified"
+    },
+    {
+      "region": "Nordland – diverse",
+      "selskap": "IRIS / RENO-VEST / kommunalt",
+      "kommuner": ["Meløy", "Sørfold", "Røst", "Værøy", "Hamarøy"],
+      "fylke": "Nordland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified – kommunene tilhører ulike IKS"
+    },
+    {
+      "region": "Ringerike",
+      "selskap": "Ringerike Avfallsselskap IKS",
+      "kommuner": ["Ringerike", "Hole", "Lunner", "Jevnaker"],
+      "fylke": "Viken",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified"
+    },
+    {
+      "region": "Hallingdal",
+      "selskap": "Hallingdal Renovasjon IKS",
+      "kommuner": ["Krødsherad", "Flå", "Nesbyen", "Gol", "Hemsedal", "Ål", "Hol"],
+      "fylke": "Viken",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified"
+    },
+    {
+      "region": "Valdres",
+      "selskap": "Valdres Renovasjon IKS",
+      "kommuner": ["Gran", "Sør-Aurdal", "Etnedal", "Nord-Aurdal", "Vestre Slidre", "Øystre Slidre", "Vang"],
+      "fylke": "Innlandet",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified"
+    },
+    {
+      "region": "Solør",
+      "selskap": "Solør Renovasjon (kommunalt)",
+      "kommuner": ["Åsnes", "Våler"],
+      "fylke": "Innlandet",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified"
+    },
+    {
+      "region": "Telemark – Tinn",
+      "selskap": "Tinn kommune (egenregi/IKS)",
+      "kommuner": ["Tinn"],
+      "fylke": "Telemark",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified"
+    },
+    {
+      "region": "Hardanger",
+      "selskap": "Hardanger og Voss Renovasjon IKS",
+      "kommuner": ["Eidfjord", "Ulvik", "Etne", "Solund"],
+      "fylke": "Vestland",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified – Etne og Solund kan tilhøre andre selskap"
+    },
+    {
+      "region": "Midt-Troms",
+      "selskap": "Midt-Troms Avfallsselskap IKS",
+      "kommuner": ["Bardu", "Storfjord"],
+      "fylke": "Troms",
+      "hentedato_system": "MinRenovasjon (KOMTEK RenovasjonWebAPI)",
+      "api_leverandor": "Norkart",
+      "api_endepunkt": "komteksky.norkart.no/komtek.renovasjonwebapi",
+      "merknad": "NOTE: unverified"
+    }
+  ]
+}

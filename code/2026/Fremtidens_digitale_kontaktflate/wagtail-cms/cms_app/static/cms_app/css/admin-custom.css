@@ -1,0 +1,36 @@
+/* KommuneConfig editor polish: cleaner grouping and emphasis for editable sections. */
+
+.cms-config-intro .help {
+  border-radius: 12px;
+  border: 1px solid #d7e3f4;
+  background: linear-gradient(135deg, #f5f9ff 0%, #eef5ff 100%);
+  color: #16365f;
+}
+
+.cms-config-intro .help h2 {
+  margin-bottom: 8px;
+  color: #0f2e57;
+}
+
+.cms-config-intro .help ul {
+  margin: 8px 0 0 18px;
+}
+
+.cms-config-panel {
+  border-radius: 12px;
+  border: 1px solid #e4ebf5;
+  box-shadow: 0 2px 8px rgba(12, 34, 66, 0.05);
+}
+
+.cms-config-panel > .w-panel__header {
+  background: linear-gradient(180deg, #f8fbff 0%, #f1f6fc 100%);
+}
+
+.cms-config-panel > .w-panel__header h2 {
+  color: #153a68;
+  font-weight: 700;
+}
+
+.cms-config-panel .w-field__label {
+  font-weight: 600;
+}

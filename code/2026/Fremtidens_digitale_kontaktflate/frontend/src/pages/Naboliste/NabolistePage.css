@@ -1,0 +1,14 @@
+.naboliste-page-layout {
+  display: grid;
+  gap: 16px;
+}
+
+.naboliste-header-panel {
+  padding-bottom: 16px;
+}
+
+@media (max-width: 520px) {
+  .page-panel {
+    padding: var(--page-pad);
+  }
+}

@@ -1,0 +1,114 @@
+
+
+.edp-btn {
+  min-height: 44px;
+  background: #b42318;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edp-btn:hover {
+  background: #912018;
+}
+
+.edm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(31, 41, 55, 0.42);
+}
+
+.edm-modal {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  gap: 20px;
+}
+
+.edm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edm-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.edm-close {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edm-close:hover {
+  color: #6b7280;
+}
+
+.edm-text {
+  margin: 0;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.edm-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.edm-btn {
+  min-height: 40px;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.edm-btn--primary {
+  background: #b42318;
+  border-color: #b42318;
+  color: #ffffff;
+}
+
+.edm-btn--primary:hover {
+  background: #912018;
+  border-color: #912018;
+}
+
+.edm-btn--secondary {
+  background: #ffffff;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+.edm-btn--secondary:hover {
+  background: #f9fafb;
+}
+

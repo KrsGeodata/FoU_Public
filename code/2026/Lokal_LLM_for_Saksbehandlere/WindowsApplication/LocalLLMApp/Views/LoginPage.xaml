@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="LocalLLMApp.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalLLMApp.Views"
+    xmlns:viewModels="using:LocalLLMApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="36">
+
+        <!-- Grid structure: Upper third for content, lower two-thirds empty -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Login form positioned in upper-middle section -->
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            Spacing="24"
+            MinWidth="350"
+            MaxWidth="500">
+
+            <!-- Title -->
+            <TextBlock 
+                Text="Logg inn" 
+                HorizontalAlignment="Center" 
+                Style="{ThemeResource TitleLargeTextBlockStyle}"
+                Margin="0,0,0,8"/>
+
+            <!-- Email Input -->
+            <TextBox 
+                Header="E-post" 
+                Text="{x:Bind ViewModel.Username, Mode=TwoWay}"
+                MaxWidth="350"
+                PlaceholderText="din.epost@kristiansand.kommune.no"
+                KeyDown="EmailTextBox_KeyDown"/>
+
+            <!-- Password Input -->
+            <PasswordBox 
+                x:Name="PasswordBox"
+                Header="Passord"
+                MaxWidth="350"
+                PasswordRevealMode="Hidden"
+                PlaceholderText="Skriv inn passord"
+                Password="{x:Bind ViewModel.Password, Mode=TwoWay}" 
+                KeyDown="PasswordBox_KeyDown"/>
+
+            <!-- Show Password Checkbox -->
+            <CheckBox 
+                Name="revealModeCheckBox" 
+                Content="Vis passord"
+                IsChecked="False"
+                Checked="CheckBox_Changed" 
+                Unchecked="CheckBox_Changed"/>
+
+            <!-- Error message -->
+            <InfoBar
+                IsOpen="{x:Bind ViewModel.HasError, Mode=OneWay}"
+                Severity="Error"
+                Message="Feil brukernavn eller passord"
+                IsClosable="False"/>
+
+            <!-- Login button -->
+            <Button 
+                Content="Logg inn" 
+                Height="36"
+                FontSize="16"
+                HorizontalAlignment="Stretch"
+                Style="{ThemeResource AccentButtonStyle}"
+                Command="{x:Bind ViewModel.NavigateToDashboardCommand}"
+                Margin="0,8,0,0"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

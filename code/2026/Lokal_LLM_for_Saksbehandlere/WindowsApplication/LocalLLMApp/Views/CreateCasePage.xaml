@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="LocalLLMApp.Views.CreateCasePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalLLMApp.Views"
+    xmlns:viewModels="using:LocalLLMApp.ViewModels"
+    xmlns:filesUserControls="using:LocalLLMApp.UserControls.Files"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--  CreateCasePage - User interface for creating new cases
+        
+        Features:
+        - Title input (optional, auto-generated if empty)
+        - Description input (multi-line)
+        - File attachments via drag-and-drop
+        - Create and Cancel buttons
+    -->
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <!-- Main layout -->
+        <Grid Padding="36,40,36,24" RowSpacing="16" MinHeight="500">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" MinWidth="400" MaxWidth="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>                  <!-- Page Title -->
+                <RowDefinition Height="Auto"/>                  <!-- Title input -->
+                <RowDefinition Height="Auto" MaxHeight="140"/>  <!-- Description (limited) -->
+                <RowDefinition Height="*"    MaxHeight="200"/>  <!-- Attachment (remaining space, capped) -->
+                <RowDefinition Height="Auto"/>                  <!-- Action Buttons -->
+            </Grid.RowDefinitions>
+            
+            <!-- Page Title -->
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                       Text="Opprette ny sak" 
+                       Style="{StaticResource TitleLargeTextBlockStyle}"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,8"/>
+
+            <!-- Title Section - fixed height -->
+            <StackPanel Grid.Row="1" Grid.Column="1" Spacing="8">
+                <TextBlock Text="Tittel" FontSize="16" FontWeight="SemiBold"/>
+                <TextBox x:Name="TitleTextBox"
+                         Text="{x:Bind ViewModel.CaseTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Padding="8"
+                         PlaceholderText="Eks: Søknad om tilbygg, Strandgaten 15"/>            
+            </StackPanel>
+
+            <!-- Description Section - limited height -->
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="Beskrivelse" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <TextBox Grid.Row="1"
+                         x:Name="DescriptionTextBox"
+                         Text="{x:Bind ViewModel.CaseDescription, Mode=TwoWay}"
+                         PlaceholderText="Vennligst gi en beskrivelse av saken" 
+                         Padding="8"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         MinHeight="60"
+                         MaxHeight="100"/>
+            </Grid>
+
+            <!-- Attachment Section - gets all remaining space -->
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="Vedlegg" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                
+                <!-- FileDragAndDropControl -->
+                <filesUserControls:FileDragAndDropControl 
+                    Grid.Row="1"
+                    x:Name="FileDropControl"
+                    PlaceholderText="Dra og slipp filer her"
+                    FilesAdded="FileDragAndDropControl_AddFiles"/>
+
+                <!-- Display attached files -->
+                <filesUserControls:FileListControl 
+                    Grid.Row="2"
+                    x:Name="AttachedFilesList"
+                    Items="{x:Bind ViewModel.AttachedFiles, Mode=OneWay}"
+                    RemoveSingleFile="FileListControl_RemovedSingleFile"
+                    RemoveMultipleFiles="FileListControl_RemoveMultipleFiles"
+                    Margin="0,8,0,0"/>
+            </Grid>
+
+            <!-- Action Buttons - Always visible at bottom -->
+            <StackPanel Grid.Row="4" Grid.Column="1"
+                        Orientation="Horizontal" 
+                        Spacing="12" 
+                        HorizontalAlignment="Center"
+                        Margin="0,16,0,0">
+                <Button x:Name="CancelButton" 
+                        Content="Avbryt" 
+                        Command="{x:Bind ViewModel.CancelCaseCommand}"
+                        Click="CancelButton_Click"
+                        Width="100"/>
+
+                <Button x:Name="CreateCaseButton" 
+                        Content="Opprett sak" 
+                        Click="CreateCaseButton_Click"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Width="120"/>
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

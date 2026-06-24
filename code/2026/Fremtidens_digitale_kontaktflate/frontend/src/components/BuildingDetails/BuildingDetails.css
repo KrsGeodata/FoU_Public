@@ -1,0 +1,310 @@
+.building-details-panel {
+  margin-top: -8px;
+  padding: 24px;
+}
+
+.building-details-title {
+  margin: 0 0 6px;
+  font-size: var(--heading-size);
+  font-weight: 700;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  line-height: 1.25;
+}
+
+.building-details-subtitle {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-subtle);
+}
+
+.building-chooser {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Keep border-width at 1px in every state; the active "ring" is drawn with an
+   inset box-shadow so selecting a button never nudges its neighbours (layout shift).
+   Default state mirrors `.property-option` (neutral grey-blue) so the two chooser
+   rows look like one consistent control. Brand color is only applied when active. */
+.building-option {
+  padding: 10px 14px;
+  border: 1px solid #c7d4e2;
+  border-radius: 2px;
+  background: #fff;
+  cursor: pointer;
+  color: #1f3e5b;
+  font-weight: 500;
+  font-size: 15px;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.building-option-label {
+  line-height: 1.3;
+  padding-bottom: 1px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.building-option-number {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-subtle);
+  line-height: 1.3;
+}
+
+.building-option.active .building-option-number {
+  color: color-mix(in srgb, var(--color-brand-primary) 80%, var(--color-brand-ink));
+}
+
+.building-option.active {
+  border-color: var(--color-brand-primary);
+  background: color-mix(in srgb, var(--color-brand-primary) 8%, white);
+  color: var(--color-brand-primary);
+  box-shadow: inset 0 0 0 3px var(--color-brand-primary);
+}
+
+.building-option:hover {
+  border-color: #8fa6be;
+  background: #f2f6fa;
+}
+
+.building-option.active:hover {
+  border-color: var(--color-brand-primary-hover);
+  background: color-mix(in srgb, var(--color-brand-primary) 12%, white);
+}
+
+.building-option:focus-visible {
+  outline: none;
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+.building-option.active:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--color-brand-primary), 0 0 0 2px var(--focus-ring-color);
+}
+
+.building-details-sections {
+  margin-top: 20px;
+  display: grid;
+  gap: 0;
+}
+
+.building-details-section {
+  min-width: 0;
+  padding-top: 22px;
+}
+
+.building-details-section:first-child {
+  padding-top: 0;
+}
+
+.building-details-section + .building-details-section {
+  margin-top: 24px;
+  border-top: 1px solid #d9e2ec;
+}
+
+.building-details-section-title {
+  margin: 0 0 12px;
+  font-size: var(--heading-size);
+  font-weight: 700;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  line-height: 1.3;
+}
+
+.building-details-summary-grid {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.building-details-summary-item {
+  min-width: 0;
+}
+
+.building-details-summary-label {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.building-details-summary-value {
+  margin: 0;
+}
+
+.building-details-floor-groups {
+  margin-top: 0;
+  padding-top: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.building-details-floor-group {
+  min-width: 0;
+}
+
+.building-details-summary-grid-three-columns {
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+}
+
+.building-details-summary-grid-two-columns {
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+}
+
+.building-details-usage-unit-groups {
+  margin-top: 0;
+  padding-top: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.building-details-usage-unit-group {
+  min-width: 0;
+}
+
+.building-details-floor-title,
+.building-details-usage-unit-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.building-details-grid {
+  margin-top: 0;
+  padding-top: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.building-details-grid-detail-cards {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 300px));
+  justify-content: start;
+}
+
+.building-details-grid-single-floor {
+  grid-template-columns: minmax(380px, 620px);
+}
+
+.building-details-item {
+  min-width: 0;
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  display: grid;
+  gap: 8px;
+}
+
+.building-details-item-placeholder {
+  background: #f8fafc;
+  border-style: dashed;
+}
+
+.building-details-item-placeholder .building-details-item-title {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.building-details-item-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.building-details-detail-line {
+  margin: 0;
+  font-size: 16px;
+  color: #1e293b;
+  line-height: 1.45;
+}
+
+.building-details-detail-line span {
+  font-weight: 600;
+}
+
+.building-details-item-label {
+  margin: 0 0 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #64748b;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.building-details-item-value {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+.building-details-item-value + .building-details-item-label {
+  margin-top: 8px;
+}
+
+.building-details-item-value:empty::before {
+  content: "\00a0";
+}
+
+@media (max-width: 980px) {
+  .building-details-summary-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .building-details-summary-grid-three-columns {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .building-details-summary-grid-two-columns {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .building-details-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .building-details-grid-detail-cards {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 240px));
+  }
+
+  .building-details-grid-single-floor {
+    grid-template-columns: minmax(220px, 1fr);
+  }
+
+  .building-details-title {
+    font-size: var(--heading-size);
+  }
+
+  .building-details-section-title {
+    font-size: var(--heading-size);
+  }
+
+  .building-details-item-value {
+    font-size: 18px;
+  }
+
+  .building-details-item-title {
+    font-size: 17px;
+  }
+
+  .building-details-detail-line {
+    font-size: 15px;
+  }
+}

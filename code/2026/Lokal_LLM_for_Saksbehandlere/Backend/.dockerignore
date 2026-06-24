@@ -1,0 +1,12 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+node_modules/
+.git/
+.github/
+*.md
+run.ps1
+setup_venv.sh
+.env.example
+docs/

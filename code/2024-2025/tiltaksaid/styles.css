@@ -1,0 +1,323 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.map-container {
+    position: relative;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
+    height: 800px;
+    width: 98.5%;
+}
+
+#map {
+    height: 780px; /* ✅ Fast høyde som matcher .map-container - padding */
+    width: 100%;
+    border-radius: 4px;
+    background-color: #e6e6e6;
+}
+
+.search-container {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.search-group {
+    position: relative;
+    width: 400px;
+}
+
+.search-group input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 110px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.search-group button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border: none;
+    background-color: #005FB8;
+    color: white;
+    padding: 0 20px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.search-group button:hover {
+    background-color: #00d5f1;
+}
+
+.zoom-display {
+    background-color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 14px;
+}
+
+.property-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 250px;
+    display: none;
+}
+
+.property-info h3 {
+    margin: 0 0 10px 0;
+    color: #1a1a1a;
+    font-size: 16px;
+}
+
+.property-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: none;
+}
+
+/* Styling for the edge length tooltips */
+.edge-label {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #333;
+    padding: 2px 4px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+#checklist-overlay {
+    position: fixed;
+    top: 0;
+    right: -310px;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid #007BFF;
+    z-index: 1000;
+}
+
+#checklist-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    font-size: 16px;
+}
+
+#toggle-checklist {
+    background: #fff;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+}
+
+#checklist-content {
+    padding: 10px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+#checklist-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#checklist-content li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#checklist-content input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checklist-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.checklist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.check-question {
+    flex: 1;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.check-options {
+    display: flex;
+    gap: 10px;
+}
+
+.check-options input[type="radio"] {
+    display: none;
+}
+
+.check-options label {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.3s, border 0.3s;
+}
+
+.check-options label.yes {
+    color: green;
+    border-color: green;
+}
+
+.check-options label.no {
+    color: red;
+    border-color: red;
+}
+
+input[type="radio"]:checked + label.yes {
+    background-color: #d4fcd4;
+}
+
+input[type="radio"]:checked + label.no {
+    background-color: #fcd4d4;
+}
+
+.leaflet-div-icon.leaflet-editing-icon {
+    width: 10px !important;
+    height: 10px !important;
+    background-color: #ffffff !important;
+    border: 2px solid rgb(255, 0, 0) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 2px black;
+}
+#detection-status {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    z-index: 9999;
+    padding: 10px;
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: none;
+    max-width: 300px;
+    font-weight: bold;
+  }
+ 
+  .map-container {
+    position: relative;
+  }
+  
+  .top-center-notification {
+    position: absolute;
+    top: 140px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    opacity: 1;
+    transition: all 0.5s ease;
+    display: none;
+  }  
+ .leaflet-draw-edit-restore {
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  display: block;
+}
+
+.leaflet-draw-edit-restore:hover {
+  background-color: #f4f4f4;
+}
+
+.leaflet-draw-edit-restore i {
+  pointer-events: none;
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KartAI - Kristiansand Kommune</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>KartAI - Kristiansand Kommune</h1>
+      <p class="subtitle">Tegn og registrer nye bygninger på din eiendom</p>
+    </div>
+
+    <!-- BYGNINGSTYPE VELGER -->
+    <div id="building-type-selector" style="margin: 10px;">
+      <label for="buildingType"><strong>Velg type bygg:</strong></label>
+      <select id="buildingType">
+        <option value="garasje">Garasje / Bod</option>
+        <option value="nybygg">Nybygg (ikke støttet ennå)</option>
+        <option value="tilbygg">Tilbygg (ikke støttet ennå)</option>
+        <option value="pergola">Pergola (ikke støttet ennå)</option>
+      </select>
+    </div>
+
+    <div id="propertyInfo" class="property-info"></div>
+  </div>
+
+  <div class="map-container">
+
+    <!-- Varselboks -->
+    <div id="no-unregistered-warning" class="top-center-notification">
+      ✔ Ingen uregistrerte bygg funnet på eiendommen.
+    </div>      
+
+    <div id="map">
+      <div id="detection-status" style="padding: 10px; font-weight: bold; display: none;"></div>
+    </div>
+
+    <div class="search-container">
+      <div class="search-group">
+        <input type="text" id="eiendomInput" placeholder="Søk etter eiendom (f.eks. 502/13)">
+        <button onclick="searchProperty()">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div id="errorMessage" class="error-message"></div>
+    </div>
+  </div>
+
+  <!-- Avstandssjekkliste -->
+  <div id="distance-checklist" style="display: none; margin: 20px;">
+    <h3>Nærmeste objekter</h3>
+    <ul id="distance-list" style="padding-left: 20px;"></ul>
+  </div>
+
+  <!-- Sjekkliste -->
+  <div id="checklist-overlay" style="right: -310px;">
+    <div id="checklist-header">
+      <button id="toggle-checklist">&rarr;</button>
+      <h3>Sjekkliste for byggesøknad</h3>
+    </div>
+    <p style="font-size: 0.9em; color: #131212; margin-bottom: 10px;">
+      Målinger fra tegningen er brukt til å fylle ut sjekklisten automatisk.
+    </p>
+    <div id="checklist-content"></div>
+  </div>
+
+  <!-- JS-biblioteker -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- LOKALISERING PÅ NORSK -->
+  <script>
+    L.drawLocal = {
+      draw: {
+        toolbar: {
+          actions: {
+            title: 'Avbryt tegning',
+            text: 'Avbryt'
+          },
+          finish: {
+            title: 'Ferdig med tegning',
+            text: 'Ferdig'
+          },
+          undo: {
+            title: 'Angre siste punkt',
+            text: 'Angre'
+          },
+          buttons: {
+            polygon: 'Tegn et bygg',
+            polyline: 'Tegn linje',
+            rectangle: 'Tegn rektangel',
+            circle: 'Tegn sirkel',
+            marker: 'Plasser markør',
+            circlemarker: 'Plasser sirkelmarkør'
+          }
+        },
+        handlers: {
+          polygon: {
+            tooltip: {
+              start: 'Klikk for å starte tegning.',
+              cont: 'Klikk for å fortsette tegningen.',
+              end: 'Klikk på første punkt for å fullføre.'
+            },
+            error: '<strong>Feil:</strong> polygonet må ikke krysse seg selv!'
+          },
+          rectangle: {
+            tooltip: {
+              start: 'Klikk og dra for å tegne et rektangel.'
+            }
+          },
+          simpleShape: {
+            tooltip: {
+              end: 'Slipp musen for å fullføre tegningen.'
+            }
+          },
+          circle: {
+            tooltip: {
+              start: 'Klikk og dra for å tegne en sirkel.'
+            },
+            radius: 'Radius'
+          },
+          marker: {
+            tooltip: {
+              start: 'Klikk på kartet for å plassere en markør.'
+            }
+          }
+        }
+      },
+      edit: {
+        toolbar: {
+          actions: {
+            save: {
+              title: 'Lagre endringer',
+              text: 'Lagre'
+            },
+            cancel: {
+              title: 'Avbryt redigering',
+              text: 'Avbryt'
+            },
+            clearAll: {
+              title: 'Fjern alle tegninger',
+              text: 'Fjern alt'
+            }
+          },
+          buttons: {
+            edit: 'Rediger bygg',
+            editDisabled: 'Ingen bygg å redigere',
+            remove: 'Slett bygg',
+            removeDisabled: 'Ingen bygg å slette'
+          }
+        },
+        handlers: {
+          edit: {
+            tooltip: {
+              text: 'Dra i punktene for å redigere.',
+              subtext: 'Klikk Avbryt for å angre endringer.'
+            }
+          },
+          remove: {
+            tooltip: {
+              text: 'Klikk på et bygg for å slette.'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Leaflet.Draw må komme etter L.drawLocal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.5/proj4.js"></script>
+
+  <!-- Din app -->
+  <script src="script.js"></script>
+</body>
+</html>

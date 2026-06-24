@@ -1,0 +1,71 @@
+.epi-root {
+  width: 100%;
+  display: grid;
+  gap: 18px;
+}
+
+.epi-step-chip {
+  justify-self: start;
+  background: #edf4ff;
+  color: #1f4f94;
+  border: 1px solid #d7e6ff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.epi-actions {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  max-width: 720px;
+}
+
+.epi-actions .edp-btn {
+  margin-left: auto;
+}
+
+.epi-back-btn {
+  width: fit-content;
+  max-width: 720px;
+  background: none;
+  color: #1f4f94;
+  border: none;
+  padding: 0;
+  margin: 20px 0 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.epi-back-btn:hover {
+  color: #163b70;
+}
+
+.epi-save-btn {
+  min-width: 75px;
+  min-height: 44px;
+  background: #002855;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.epi-save-btn:hover {
+  background: #003d80;
+}
+
+.epi-save-btn:disabled {
+  background: #6b7b92;
+  cursor: not-allowed;
+}

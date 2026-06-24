@@ -1,0 +1,15 @@
+# Source - https://stackoverflow.com/a
+# Posted by MAROUANE BENMOUSSA, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-01-22, License - CC BY-SA 4.0
+
+FROM postgres:14.20-trixie
+
+
+RUN apt-get update && apt-get install -y postgresql-14-postgis-3
+
+# Init scripts run automatically on first startup (alphabetical order)
+COPY prod_data/001_create_cms_db.sql /docker-entrypoint-initdb.d/
+COPY prod_data/002_matrikkel_schema.sql /docker-entrypoint-initdb.d/
+COPY prod_data/003_matrikkel_seed.sql /docker-entrypoint-initdb.d/
+
+CMD ["/usr/local/bin/docker-entrypoint.sh","postgres"]

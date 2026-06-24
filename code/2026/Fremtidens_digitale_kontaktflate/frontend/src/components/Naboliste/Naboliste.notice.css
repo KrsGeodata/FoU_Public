@@ -1,0 +1,218 @@
+/* Notice-tab styles for form fields, selection actions, and recipient indicators. */
+/* Notice tab layout + form spacing. */
+.notice-panel {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.notice-intro {
+  margin-top: -2px;
+  margin-bottom: 8px;
+}
+
+.notice-form {
+  display: grid;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--surface-info-border);
+  margin-top: 8px;
+}
+
+.notice-field {
+  display: grid;
+  gap: 6px;
+}
+
+.notice-field > span {
+  font-size: 12px;
+  color: var(--info-label-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Form controls for subject/message. */
+.notice-field input,
+.notice-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--surface-info-border);
+  border-radius: 4px;
+  background: #ffffff;
+  color: var(--info-value-color);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.notice-field textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+.notice-field input:focus-visible,
+.notice-field textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+.notice-send-button {
+  justify-self: start;
+  border: 1px solid var(--color-brand-primary);
+  background: var(--color-brand-primary);
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notice-send-button:hover {
+  background: var(--color-brand-primary-hover);
+  border-color: var(--color-brand-primary-hover);
+}
+
+.notice-status {
+  margin: 0;
+  min-height: 20px;
+  font-size: 14px;
+  color: var(--color-brand-ink);
+}
+
+.notice-toggle-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.notice-toggle-button {
+  border: 1px solid var(--surface-info-border);
+  background: #ffffff;
+  color: var(--color-brand-ink);
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notice-toggle-button:hover {
+  border-color: var(--color-brand-primary);
+  background: var(--surface-info-bg);
+}
+
+.notice-toggle-button:focus-visible {
+  outline: none;
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+/* Actions above recipient list (e.g. "Velg alle"). */
+.notice-selection-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.notice-select-all-button {
+  border: 1px solid var(--surface-info-border);
+  background: #ffffff;
+  color: var(--color-brand-ink);
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notice-select-all-button:hover {
+  border-color: var(--color-brand-primary);
+  background: var(--surface-info-bg);
+}
+
+.notice-select-all-button:focus-visible {
+  outline: none;
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+.notice-select-all-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Clickable recipient card wrapper. */
+.notice-recipient-button {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  position: relative;
+}
+
+.notice-recipient-button .neighbor-card {
+  margin-bottom: 6px;
+  padding-right: 48px;
+}
+
+.notice-recipient-button:focus-visible {
+  outline: none;
+}
+
+.notice-recipient-button:focus-visible .neighbor-card {
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+.notice-select-hint {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--info-label-color);
+  font-weight: 600;
+}
+
+/* Circle check indicator shown inside selected cards. */
+.notice-recipient-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #9bb0c4;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  background: #ffffff;
+}
+
+.notice-recipient-indicator::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 10px;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transform: translate(-50%, -58%) rotate(45deg);
+}
+
+.notice-recipient-indicator.is-active {
+  border-color: var(--color-brand-primary);
+  background: var(--color-brand-primary);
+  color: #ffffff;
+}
+
+.notice-recipient-indicator.is-active::before {
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.notice-recipient-button.is-selected .notice-select-hint {
+  color: var(--color-brand-primary);
+}

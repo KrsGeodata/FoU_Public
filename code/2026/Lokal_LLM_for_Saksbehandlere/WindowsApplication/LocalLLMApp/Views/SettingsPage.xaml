@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="LocalLLMApp.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+    
+    <!-- SettingsPage: For managing application settings -->
+    <!-- Uses SettingsCard for a clean and reconizable look -->
+    <!-- Users can change the Application theme (light / dark mode) and language -->
+
+
+    <Page.Resources>
+        <ResourceDictionary Source="/UserControls/ResourceDictionary.xaml"/>
+    </Page.Resources>
+
+    <Grid Padding="36,40,36,24">
+        
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="SmallLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ContentRoot.HorizontalAlignment" Value="Stretch"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1000"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ContentRoot.MaxWidth" Value="900"/>
+                        <Setter Target="ContentRoot.HorizontalAlignment" Value="Center"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid x:Name="ContentRoot" MinWidth="320">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Innstillinger" 
+                       Grid.Row="0"
+                       HorizontalAlignment="Left" 
+                       Style="{StaticResource TitleLargeTextBlockStyle}"
+                       Margin="0,0,0,16"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Spacing="4" HorizontalAlignment="Stretch">
+
+                    <controls:SettingsCard Header="Lys eller mørkt tema"
+                                           Description="Velg mellom lyst eller mørkt utseende for applikasjonen">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE7AB;"/>
+                        </controls:SettingsCard.HeaderIcon>
+                        <ToggleSwitch x:Name="DarkModeToggle"
+                                      AutomationProperties.Name="darkmode"
+                                      OffContent="Lys modus" 
+                                      OnContent="Mørk modus"
+                                      Toggled="DarkModeToggle_Toggled"/>
+                    </controls:SettingsCard>
+
+                    <controls:SettingsCard Header="Språk"
+                                           Description="Endre språket i applikasjonens brukergrensesnitt">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE774;"/>
+                        </controls:SettingsCard.HeaderIcon>
+                        <ComboBox PlaceholderText="Velg språk" 
+                                  Width="200" 
+                                  SelectedIndex="0">
+                            <x:String>Norsk</x:String>
+                            <x:String>English</x:String>
+                        </ComboBox>
+                    </controls:SettingsCard>
+
+                    <TextBlock Text="Om" 
+                               Style="{ThemeResource SubtitleTextBlockStyle}"
+                               Margin="4,24,0,8"/>
+
+                    <controls:SettingsCard Header="Lokal LLM App"
+                                           Description="Utvikles av bachelorgruppe Lambda som en del av bachelorprosjektet 'Lokal LLM' i Kristiansand Kommune. Appen effektiviserer saksbehandling ved hjelp av spesialiserte KI-agenter.">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE713;"/>
+                        </controls:SettingsCard.HeaderIcon>
+                        <TextBlock Text="Versjon 1.0.0" 
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" 
+                                   VerticalAlignment="Center"/>
+                    </controls:SettingsCard>
+
+                    <controls:SettingsCard Header="Inkluderte funksjoner">
+                        <controls:SettingsCard.Description>
+                            <StackPanel Spacing="4" Margin="0,4,0,0">
+                                <TextBlock Text="• Saksbehandling med samtalehistorikk" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                <TextBlock Text="• Lokal AI-assistanse (Ingen data sendes ut av kommunen)" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                <TextBlock Text="• Filvedlegg og sikker dokumenthåndtering" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                <TextBlock Text="• Avansert søk i historiske saker og samtaler" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                            </StackPanel>
+                        </controls:SettingsCard.Description>
+                    </controls:SettingsCard>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
