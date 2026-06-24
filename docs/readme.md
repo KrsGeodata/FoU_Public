@@ -1,7 +1,7 @@
 # Kristiansand Municipal FoU Program
 <img width="672" height="61" alt="image" src="https://github.com/user-attachments/assets/434ddf7f-bb46-479f-8135-514259ebdad6" />
 
-[🏠 FoU Portal](https://krsgeodata.github.io/) | [📚 FoU Public](../../README.md) | [📖 Dokumentasjon](../README.md) | [💻 GitHub](https://github.com/KrsGeodata/FoU_Public) | [📄 Lisens](../../LICENSE_USAGE.md) | [🧪 K-LABS](https://labs.geokrs.no)
+[🏠 FoU Portal](https://krsgeodata.github.io/) | [📚 FoU Public](../../README.md) | [📖 Dokumentasjon](../README.md) | [💻 GitHub](https://github.com/KrsGeodata/FoU_Public) | [📄 Lisens](../../LICENSE_USAGE.md) | [🧪 K-LABS](http://labs.geokrs.no)
 
 ---
 
@@ -121,7 +121,7 @@ Målet er å gjøre det mulig å:
 ## Relaterte ressurser
 
 🌐 K-LABS  
-https://labs.geokrs.no
+http://labs.geokrs.no
 
 📂 FoU Public Repository  
 https://github.com/KrsGeodata/FoU_Public
